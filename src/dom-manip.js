@@ -8,10 +8,15 @@ const createLayout = () => {
 
 const itemManipulation = {
     contentContainer: document.querySelector('#content'),
-    selectionGrid: document.querySelector('#content div'),
+    selectionGrid: null,
+
+    updateProperties: function() {
+        this.selectionGrid = document.querySelector('.grid');
+    },
+
     addItem: function() {
         console.log(this.contentContainer);
-        console.log(this.selectionGrid)
+        console.log(this.selectionGrid);
     },
 
 //     const removeItem
