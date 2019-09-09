@@ -15,21 +15,26 @@ const itemManipulation = {
     },
 
     addItem: function() {
-        console.log(this.contentContainer);
-        console.log(this.selectionGrid);
+        let gridItem = document.createElement('div');
+        gridItem.classList.add('grid-item', 'to-do');
+        this.selectionGrid.append(gridItem);
+        return gridItem;
     },
 
-//     const removeItem
+    // removeItem: function(e) {
+    //     let currentTarget = e.target;
+    // },
 
-//     const markComplete
+    markComplete: function(e) {
+        e.target.classList.add('complete');
+    },
 
-//     const setPriority
+//     setPriority
     
-//     const setDescription
+//     setDescription
     
-//     const setDueDate
+//     setDueDate
 
-//     const setClass
 };
 
 export { itemManipulation, createLayout };

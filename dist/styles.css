@@ -3,14 +3,20 @@
 }
 
 .grid {
-    background-color: red;
     display: grid;
-    grid-template-columns: repeat(4, 50px);
-    grid-template-rows: repeat(4, 50px);
+    background-color: red;
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(3, 50px);
     height: 200px;
     width: 200px;
+    grid-gap: 2px;
 }
-/* 
-.griditem {
 
-} */
+.grid-item {
+    background-color: blue;
+    border: 3px solid black;
+}
+
+.complete {
+    background-color: green;
+}
