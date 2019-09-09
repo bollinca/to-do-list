@@ -1,3 +1,4 @@
-console.log('Webpack functioning');
+import { createLayout, itemManipulation } from './dom-manip.js';
 
-// export {} from './blahblahblah';
+createLayout();
+itemManipulation();
