@@ -21,9 +21,10 @@ const itemManipulation = {
         return gridItem;
     },
 
-    // removeItem: function(e) {
-    //     let currentTarget = e.target;
-    // },
+    removeItem: function(e) {
+        let currentTarget = e.target;
+        currentTarget.parentNode.removeChild(currentTarget);
+    },
 
     markComplete: function(e) {
         e.target.classList.add('complete');
