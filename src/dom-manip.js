@@ -6,12 +6,13 @@ const createLayout = () => {
     contentContainer.append(selectionGrid);
 };
 
-
-const itemManipulation = () => {
-    const contentContainer = document.querySelector('#content');
-    const selectionGrid = document.querySelector('.grid');
-    console.log(selectionGrid);
-//     const addItem
+const itemManipulation = {
+    contentContainer: document.querySelector('#content'),
+    selectionGrid: document.querySelector('#content div'),
+    addItem: function() {
+        console.log(this.contentContainer);
+        console.log(this.selectionGrid)
+    },
 
 //     const removeItem
 
@@ -26,4 +27,4 @@ const itemManipulation = () => {
 //     const setClass
 };
 
-export { createLayout, itemManipulation };
+export { itemManipulation, createLayout };

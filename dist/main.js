@@ -90,11 +90,11 @@
 /*!**************************!*\
   !*** ./src/dom-manip.js ***!
   \**************************/
-/*! exports provided: createLayout, itemManipulation */
+/*! exports provided: itemManipulation, createLayout */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"createLayout\", function() { return createLayout; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"itemManipulation\", function() { return itemManipulation; });\nconst createLayout = () => {\n    const contentContainer = document.querySelector('#content');\n    const selectionGrid = document.createElement('div');\n    selectionGrid.classList.add('grid');\n\n    contentContainer.append(selectionGrid);\n};\n\n\nconst itemManipulation = () => {\n    const contentContainer = document.querySelector('#content');\n    const selectionGrid = document.querySelector('.grid');\n    console.log(selectionGrid);\n//     const addItem\n\n//     const removeItem\n\n//     const markComplete\n\n//     const setPriority\n    \n//     const setDescription\n    \n//     const setDueDate\n\n//     const setClass\n};\n\n\n\n//# sourceURL=webpack:///./src/dom-manip.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"itemManipulation\", function() { return itemManipulation; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"createLayout\", function() { return createLayout; });\nconst createLayout = () => {\n    const contentContainer = document.querySelector('#content');\n    const selectionGrid = document.createElement('div');\n    selectionGrid.classList.add('grid');\n\n    contentContainer.append(selectionGrid);\n};\n\nconst itemManipulation = {\n    contentContainer: document.querySelector('#content'),\n    selectionGrid: document.querySelector('#content div'),\n    addItem: function() {\n        console.log(this.contentContainer);\n        console.log(this.selectionGrid)\n    },\n\n//     const removeItem\n\n//     const markComplete\n\n//     const setPriority\n    \n//     const setDescription\n    \n//     const setDueDate\n\n//     const setClass\n};\n\n\n\n//# sourceURL=webpack:///./src/dom-manip.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom_manip_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom-manip.js */ \"./src/dom-manip.js\");\n\n\nObject(_dom_manip_js__WEBPACK_IMPORTED_MODULE_0__[\"createLayout\"])();\nObject(_dom_manip_js__WEBPACK_IMPORTED_MODULE_0__[\"itemManipulation\"])();\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom_manip_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom-manip.js */ \"./src/dom-manip.js\");\n\n\nObject(_dom_manip_js__WEBPACK_IMPORTED_MODULE_0__[\"createLayout\"])();\n_dom_manip_js__WEBPACK_IMPORTED_MODULE_0__[\"itemManipulation\"].addItem();\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
