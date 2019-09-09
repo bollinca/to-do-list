@@ -27,7 +27,7 @@ const itemManipulation = {
     },
 
     markComplete: function(e) {
-        e.target.classList.add('complete');
+        e.target.classList.toggle('complete');
     },
 
 //     setPriority
