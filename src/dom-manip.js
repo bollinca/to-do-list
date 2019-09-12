@@ -21,13 +21,17 @@ const itemManipulation = {
     addItem: function() {
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item', 'to-do');
+        let removeButton = document.createElement('button');
+        removeButton.classList.add('remove');
+        removeButton.textContent = 'X';
+        gridItem.append(removeButton);
+
         this.selectionGrid.append(gridItem);
         return gridItem;
     },
 
-    removeItem: function(e) {
-        let currentTarget = e.target;
-        currentTarget.parentNode.removeChild(currentTarget);
+    removeItem: function(target) {
+        target.parentNode.removeChild(target);
     },
 
     markComplete: function(e) {
