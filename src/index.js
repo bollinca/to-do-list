@@ -12,10 +12,16 @@ let removeButtons = Array.from(document.querySelectorAll('.remove'));
 removeButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         let target = e.target.parentNode;
-        console.log(e.target.parentNode);
         itemManipulation.removeItem(target);
     })
 });
 
 testTime.addEventListener('click', (e) => itemManipulation.markComplete(e));
-addItem.addEventListener('click', () => itemManipulation.addItem());
+addItem.addEventListener('click', () => {
+    let currentItem = itemManipulation.addItem();
+    let itemRemover = currentItem.querySelector('.remove');
+    itemRemover.addEventListener('click', (e) => {
+        let target = e.target.parentNode;
+        itemManipulation.removeItem(target);
+    }) 
+});
