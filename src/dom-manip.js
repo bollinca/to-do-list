@@ -34,8 +34,8 @@ const itemManipulation = {
         target.parentNode.removeChild(target);
     },
 
-    markComplete: function(e) {
-        e.target.classList.toggle('complete');
+    markComplete: function(target) {
+        target.classList.toggle('complete');
     },
 
 //     setPriority
