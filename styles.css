@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+#content {
+    margin: 0 auto;
+}
+
 .grid {
     display: grid;
     background-color: red;
@@ -10,6 +14,7 @@
     height: 200px;
     width: 200px;
     grid-gap: 2px;
+    margin: 0 auto;
 }
 
 .grid-item {
@@ -22,7 +27,16 @@
 }
 
 #add-item {
+    display: block;
     width: 80px;
     height: 30px;
-    margin: 5px;
+    margin: 5px auto;
+}
+
+#project-menu {
+    background-color: black;
+    color: white;
+    height: 90vh;
+    width: 20%;
+    position: fixed;
 }
