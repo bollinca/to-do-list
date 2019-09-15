@@ -6,7 +6,6 @@ itemManipulation.addItem();
 itemManipulation.addItem();
 itemManipulation.addItem();
 
-let testTime = itemManipulation.addItem();
 let addItem = document.querySelector('#add-item');
 let removeButtons = Array.from(document.querySelectorAll('.remove'));
 removeButtons.forEach(button => {

@@ -5,7 +5,11 @@ const createLayout = () => {
     const addItem = document.createElement('button');
     addItem.id = 'add-item';
     addItem.textContent = 'Add Item';
+    const projectMenu = document.createElement('div');
+    projectMenu.id = 'project-menu';
+    projectMenu.textContent = 'Projects:'
 
+    contentContainer.append(projectMenu);
     contentContainer.append(addItem);
     contentContainer.append(selectionGrid);
 };
