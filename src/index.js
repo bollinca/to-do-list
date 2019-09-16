@@ -1,5 +1,5 @@
 import { createLayout, itemManipulation } from './dom-manip.js';
-import { setRemoveListeners, setCompleteListeners } from './listener-control.js';
+import { setListeners } from './listener-control.js';
 
 createLayout();
 itemManipulation.updateProperties();
@@ -9,10 +9,10 @@ itemManipulation.addItem();
 
 let addItem = document.querySelector('#add-item');
 let removeButtons = Array.from(document.querySelectorAll('.remove'));
-setRemoveListeners(removeButtons);
+setListeners.removeItem(removeButtons);
 
 let gridItems = Array.from(document.querySelectorAll('.grid-item'));
-setCompleteListeners(gridItems);
+setListeners.markComplete(gridItems);
 
 addItem.addEventListener('click', () => {
     let currentItem = itemManipulation.addItem();

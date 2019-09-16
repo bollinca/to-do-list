@@ -2,25 +2,23 @@
 
 import { itemManipulation } from './dom-manip.js';
 
-const setRemoveListeners = (targets) => {
-    targets.forEach(target => {
-        target.addEventListener('click', () => {
-            let gridItemToRemove = target.parentNode;
-            itemManipulation.removeItem(gridItemToRemove);
+const setListeners = {
+    removeItem: function(targets) {
+        targets.forEach(target => {
+            target.addEventListener('click', () => {
+                let gridItemToRemove = target.parentNode;
+                itemManipulation.removeItem(gridItemToRemove);
+            });
         });
-    });
-};
+    },
 
-const setCompleteListeners = (targets) => {
-    targets.forEach(target => {
-        target.addEventListener('click', () => itemManipulation.markComplete(target));
-    });
-};
+    markComplete: function(targets) {
+        targets.forEach(target => {
+            target.addEventListener('click', () => itemManipulation.markComplete(target));
+        });
+    },
 
-let gridItems = Array.from(document.querySelectorAll('.grid-item'));
-gridItems.forEach(item => {
-    item.addEventListener('click', (e) => itemManipulation.markComplete(e.target));
-});
+};
 
 // addItem.addEventListener('click', () => {
 // let currentItem = itemManipulation.addItem();
@@ -32,4 +30,4 @@ gridItems.forEach(item => {
 // });
 // });
 
-export { setRemoveListeners, setCompleteListeners };
+export { setListeners };
