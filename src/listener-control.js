@@ -3,7 +3,7 @@
 import { itemManipulation } from './dom-manip.js';
 
 const setListeners = {
-    removeItem: function(targets) {
+    removeItem: function (targets) {
         targets.forEach(target => {
             target.addEventListener('click', () => {
                 let gridItemToRemove = target.parentNode;
@@ -12,22 +12,20 @@ const setListeners = {
         });
     },
 
-    markComplete: function(targets) {
+    markComplete: function (targets) {
         targets.forEach(target => {
             target.addEventListener('click', () => itemManipulation.markComplete(target));
         });
     },
 
+    addNew: function (target) {
+        target.addEventListener('click', () => {
+            let newItem = itemManipulation.addItem();
+            newItem.addEventListener('click', (e) => itemManipulation.markComplete(e.target));
+            let newRemoveButton = newItem.querySelector('.remove');
+            newRemoveButton.addEventListener('click', () => itemManipulation.removeItem(newRemoveButton.parentNode));
+        });
+    }
 };
-
-// addItem.addEventListener('click', () => {
-// let currentItem = itemManipulation.addItem();
-// currentItem.addEventListener('click', (e) => itemManipulation.markComplete(e.target));
-// let itemRemover = currentItem.querySelector('.remove');
-// itemRemover.addEventListener('click', (e) => {
-// let target = e.target.parentNode;
-// itemManipulation.removeItem(target);
-// });
-// });
 
 export { setListeners };

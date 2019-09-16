@@ -18,11 +18,11 @@ const itemManipulation = {
     contentContainer: document.querySelector('#content'),
     selectionGrid: null,
 
-    updateProperties: function() {
+    updateProperties: function () {
         this.selectionGrid = document.querySelector('.grid');
     },
 
-    addItem: function() {
+    addItem: function () {
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item', 'to-do');
         let removeButton = document.createElement('button');
@@ -34,19 +34,19 @@ const itemManipulation = {
         return gridItem;
     },
 
-    removeItem: function(target) {
+    removeItem: function (target) {
         target.parentNode.removeChild(target);
     },
 
-    markComplete: function(target) {
+    markComplete: function (target) {
         target.classList.toggle('complete');
     },
 
-//     setPriority
-    
-//     setDescription
-    
-//     setDueDate
+    //     setPriority
+
+    //     setDescription
+
+    //     setDueDate
 
 };
 
