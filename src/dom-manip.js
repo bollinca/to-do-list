@@ -2,9 +2,11 @@ const createLayout = () => {
     const contentContainer = document.querySelector('#content');
     const selectionGrid = document.createElement('div');
     selectionGrid.classList.add('grid');
+
     const addItem = document.createElement('button');
     addItem.id = 'add-item';
     addItem.textContent = 'Add Item';
+
     const projectMenu = document.createElement('div');
     projectMenu.id = 'project-menu';
     projectMenu.textContent = 'Projects:'
@@ -50,4 +52,19 @@ const itemManipulation = {
 
 };
 
-export { itemManipulation, createLayout };
+const folderManipulation = {
+    container: null,
+    updateContainer: function () {
+        this.container = document.querySelector('#project-menu')
+    },
+
+    // addFolder: function() {
+// 
+    // },
+// 
+    // removeFolder: function() {
+        // 
+    // }
+}
+
+export { itemManipulation, createLayout, folderManipulation };

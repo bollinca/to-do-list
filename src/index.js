@@ -1,4 +1,4 @@
-import { createLayout, itemManipulation } from './dom-manip.js';
+import { createLayout, itemManipulation, folderManipulation } from './dom-manip.js';
 import { setListeners } from './listener-control.js';
 
 createLayout();
@@ -15,3 +15,6 @@ setListeners.markComplete(gridItems);
 
 let addItem = document.querySelector('#add-item');
 setListeners.addNew(addItem);
+
+folderManipulation.updateContainer();
+console.log(folderManipulation.container);
