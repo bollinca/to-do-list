@@ -19,4 +19,7 @@ setListeners.addNew(addItem);
 folderManipulation.updateContainer();
 
 ///testing
-itemManipulation.setPriority(test);
+itemManipulation.setData(test, 'name');
+itemManipulation.setData(test, 'description');
+itemManipulation.setData(test, 'due-date');
+itemManipulation.setData(test, 'priority');
