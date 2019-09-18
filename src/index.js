@@ -5,7 +5,7 @@ createLayout();
 itemManipulation.updateProperties();
 itemManipulation.addItem();
 itemManipulation.addItem();
-itemManipulation.addItem();
+let test = itemManipulation.addItem();
 
 let removeButtons = Array.from(document.querySelectorAll('.remove'));
 setListeners.removeItem(removeButtons);
@@ -17,4 +17,6 @@ let addItem = document.querySelector('#add-item');
 setListeners.addNew(addItem);
 
 folderManipulation.updateContainer();
-console.log(folderManipulation.container);
+
+///testing
+itemManipulation.setPriority(test);

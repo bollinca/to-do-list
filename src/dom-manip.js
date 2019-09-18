@@ -35,10 +35,15 @@ const itemManipulation = {
 
         let itemName = document.createElement('h2');
         itemName.textContent = 'Hey dude';
+        itemName.setAttribute('data-type', 'name');
+
         let itemDue = document.createElement('h3');
         itemDue.textContent = '9/9/19';
+        itemDue.setAttribute('data-type', 'due-date');
+
         let itemPriority = document.createElement('p');
         itemPriority.textContent = '5';
+        itemPriority.setAttribute('data-type', 'priority');
 
         this.selectionGrid.append(gridItem);
         gridItem.append(itemName);
@@ -55,7 +60,12 @@ const itemManipulation = {
         target.classList.toggle('complete');
     },
 
-    //     setPriority
+    setPriority: function (target) {
+        let currentPriority = target.querySelector('[data-type=priority]');
+        console.log(currentPriority.textContent);
+        currentPriority.textContent = 'Test worked';
+        console.log(currentPriority.textContent);
+    },
 
     //     setDescription
 
