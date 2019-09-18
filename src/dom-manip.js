@@ -27,12 +27,23 @@ const itemManipulation = {
     addItem: function () {
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item', 'to-do');
+        
         let removeButton = document.createElement('button');
         removeButton.classList.add('remove');
         removeButton.textContent = 'X';
         gridItem.append(removeButton);
 
+        let itemName = document.createElement('h2');
+        itemName.textContent = 'Hey dude';
+        let itemDue = document.createElement('h3');
+        itemDue.textContent = '9/9/19';
+        let itemPriority = document.createElement('p');
+        itemPriority.textContent = '5';
+
         this.selectionGrid.append(gridItem);
+        gridItem.append(itemName);
+        gridItem.append(itemDue);
+        gridItem.append(itemPriority);
         return gridItem;
     },
 
