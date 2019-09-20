@@ -95,6 +95,43 @@ const editItem = {
     createForm: function () {
         let itemForm = document.createElement('form');
         itemForm.id = 'item-form';
+
+        let nameLabel = document.createElement('label');
+        nameLabel.setAttribute('for', 'name');
+        nameLabel.textContent = 'Name'
+        let nameInput = document.createElement('input');
+        nameInput.setAttribute('type', 'text');
+        nameInput.id = 'name';
+
+        let priorityLabel = document.createElement('label');
+        priorityLabel.setAttribute('for', 'priority');
+        priorityLabel.textContent = 'Priority Level';
+        let priorityInput = document.createElement('input');
+        priorityInput.id = 'priority';
+        priorityInput.setAttribute('type', 'number');
+
+        let dueLabel = document.createElement('label');
+        dueLabel.setAttribute('for', 'due');
+        dueLabel.textContent = 'Due Date:';
+        let dueInput = document.createElement('input');
+        dueInput.id = 'due';
+        dueInput.setAttribute('type', 'date');
+
+        let descriptionLabel = document.createElement('label');
+        descriptionLabel.setAttribute('for', 'description');
+        descriptionLabel.textContent = 'Description';
+        let descriptionInput = document.createElement('textarea');
+        descriptionInput.id = 'description';
+
+        itemForm.append(nameLabel);
+        itemForm.append(nameInput);
+        itemForm.append(priorityLabel);
+        itemForm.append(priorityInput);
+        itemForm.append(dueLabel);
+        itemForm.append(dueInput);
+        itemForm.append(descriptionLabel);
+        itemForm.append(descriptionInput);
+
         console.log(itemForm);
         this.contentContainer.append(itemForm);
     },
