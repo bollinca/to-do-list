@@ -27,7 +27,7 @@ const itemManipulation = {
     addItem: function () {
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item', 'to-do');
-        
+
         let removeButton = document.createElement('button');
         removeButton.classList.add('remove');
         removeButton.textContent = 'X';
@@ -65,7 +65,7 @@ const itemManipulation = {
         target.classList.toggle('complete');
     },
 
-    setData: function(target, dataType) {
+    setData: function (target, dataType) {
         let currentData = target.querySelector(`[data-type=${dataType}]`);
         console.log(currentData.textContent);
     },
@@ -81,12 +81,23 @@ const folderManipulation = {
     },
 
     // addFolder: function() {
-// 
+    // 
     // },
-// 
+    // 
     // removeFolder: function() {
-        // 
+    // 
     // }
 }
 
-export { itemManipulation, createLayout, folderManipulation };
+const editItem = {
+    contentContainer: document.querySelector('#content'),
+
+    createForm: function () {
+        let itemForm = document.createElement('form');
+        itemForm.id = 'item-form';
+        console.log(itemForm);
+        this.contentContainer.append(itemForm);
+    },
+};
+
+export { itemManipulation, createLayout, folderManipulation, editItem };
