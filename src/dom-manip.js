@@ -69,9 +69,6 @@ const itemManipulation = {
         let currentData = target.querySelector(`[data-type=${dataType}]`);
         console.log(currentData.textContent);
     },
-
-    //     setDescription
-
 };
 
 const folderManipulation = {
@@ -89,23 +86,23 @@ const folderManipulation = {
     // }
 }
 
-const editItem = {
+const itemForm = {
     contentContainer: document.querySelector('#content'),
 
     createForm: function () {
-        let itemForm = document.createElement('form');
-        itemForm.id = 'item-form';
+        let form = document.createElement('form');
+        form.id = 'item-form';
 
         let nameLabel = document.createElement('label');
         nameLabel.setAttribute('for', 'name');
-        nameLabel.textContent = 'Name'
+        nameLabel.textContent = 'Name:'
         let nameInput = document.createElement('input');
         nameInput.setAttribute('type', 'text');
         nameInput.id = 'name';
 
         let priorityLabel = document.createElement('label');
         priorityLabel.setAttribute('for', 'priority');
-        priorityLabel.textContent = 'Priority Level';
+        priorityLabel.textContent = 'Priority Level:';
         let priorityInput = document.createElement('input');
         priorityInput.id = 'priority';
         priorityInput.setAttribute('type', 'number');
@@ -119,22 +116,27 @@ const editItem = {
 
         let descriptionLabel = document.createElement('label');
         descriptionLabel.setAttribute('for', 'description');
-        descriptionLabel.textContent = 'Description';
+        descriptionLabel.textContent = 'Description:';
         let descriptionInput = document.createElement('textarea');
         descriptionInput.id = 'description';
 
-        itemForm.append(nameLabel);
-        itemForm.append(nameInput);
-        itemForm.append(priorityLabel);
-        itemForm.append(priorityInput);
-        itemForm.append(dueLabel);
-        itemForm.append(dueInput);
-        itemForm.append(descriptionLabel);
-        itemForm.append(descriptionInput);
+        let confirmButton = document.createElement('button');
+        confirmButton.textContent = 'Confirm';
+        confirmButton.id = 'confirm';
 
-        console.log(itemForm);
-        this.contentContainer.append(itemForm);
+        form.append(nameLabel);
+        form.append(nameInput);
+        form.append(priorityLabel);
+        form.append(priorityInput);
+        form.append(dueLabel);
+        form.append(dueInput);
+        form.append(descriptionLabel);
+        form.append(descriptionInput);
+        form.append(confirmButton);
+
+        console.log(form);
+        this.contentContainer.append(form);
     },
 };
 
-export { itemManipulation, createLayout, folderManipulation, editItem };
+export { itemManipulation, createLayout, folderManipulation, itemForm };

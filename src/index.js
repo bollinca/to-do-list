@@ -1,4 +1,4 @@
-import { createLayout, itemManipulation, folderManipulation, editItem } from './dom-manip.js';
+import { createLayout, itemManipulation, folderManipulation, itemForm } from './dom-manip.js';
 import { setListeners } from './listener-control.js';
 
 createLayout();
@@ -23,4 +23,4 @@ itemManipulation.setData(test, 'name');
 itemManipulation.setData(test, 'description');
 itemManipulation.setData(test, 'due-date');
 itemManipulation.setData(test, 'priority');
-editItem.createForm();
+itemForm.createForm();
