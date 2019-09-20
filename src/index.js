@@ -24,3 +24,6 @@ itemManipulation.setData(test, 'description');
 itemManipulation.setData(test, 'due-date');
 itemManipulation.setData(test, 'priority');
 itemForm.createForm();
+folderManipulation.addFolder();
+folderManipulation.addFolder();
+

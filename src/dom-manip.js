@@ -77,9 +77,13 @@ const folderManipulation = {
         this.container = document.querySelector('#project-menu')
     },
 
-    // addFolder: function() {
-    // 
-    // },
+    addFolder: function() {
+        let folder = document.createElement('button');
+        folder.classList.add('folder');
+        let folderName = prompt('Project Name?');
+        folder.textContent = folderName;
+        this.container.append(folder);
+    },
     // 
     // removeFolder: function() {
     // 
