@@ -21,7 +21,7 @@ const setListeners = {
     addNew: function (target) {
         target.addEventListener('click', () => {
             let newItem = itemManipulation.addItem();
-            newItem.addEventListener('click', (e) => itemManipulation.markComplete(e.target));
+            newItem.addEventListener('click', () => itemManipulation.markComplete(newItem));
             let newRemoveButton = newItem.querySelector('.remove');
             newRemoveButton.addEventListener('click', () => itemManipulation.removeItem(newRemoveButton.parentNode));
         });
