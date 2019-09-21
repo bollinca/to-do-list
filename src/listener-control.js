@@ -20,8 +20,15 @@ const setListeners = {
         target.addEventListener('click', () => {
             let newItem = itemManipulation.addItem();
             newItem.addEventListener('click', () => itemManipulation.markComplete(newItem));
+            
             let newRemoveButton = newItem.querySelector('.remove');
             newRemoveButton.addEventListener('click', () => itemManipulation.removeItem(newRemoveButton.parentNode));
+            
+            let newEditButton = newItem.querySelector('.edit');
+            newEditButton.addEventListener('click', () => {
+                itemForm.createForm()
+                this.editItem();
+            });
         });
     },
 
@@ -29,8 +36,8 @@ const setListeners = {
         targets.forEach(target => {
             target.addEventListener('click', () => {
                 itemForm.createForm();
+                this.editItem();
             });
-            target.addEventListener('click', () => this.editItem());
         });
     },
 
