@@ -9,8 +9,10 @@ const createLayout = () => {
 
     const projectMenu = document.createElement('div');
     projectMenu.id = 'project-menu';
-    projectMenu.textContent = 'Projects:'
+    const menuTitle = document.createElement('h2');
+    menuTitle.textContent = 'Projects:';
 
+    projectMenu.append(menuTitle);
     contentContainer.append(projectMenu);
     contentContainer.append(addItem);
     contentContainer.append(selectionGrid);

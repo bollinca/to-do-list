@@ -46,6 +46,11 @@
     top: 0;
 }
 
+#project-menu > h2 {
+    text-decoration: underline;
+    font-size: 36px;
+}
+
 button.folder {
     display: block;
     width: 80%;
