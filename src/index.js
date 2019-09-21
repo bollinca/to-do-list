@@ -18,12 +18,14 @@ setListeners.addNew(addItem);
 
 folderManipulation.updateContainer();
 
+
 ///testing
 itemManipulation.setData(test, 'name');
 itemManipulation.setData(test, 'description');
 itemManipulation.setData(test, 'due-date');
 itemManipulation.setData(test, 'priority');
+folderManipulation.addFolder();
+folderManipulation.addFolder();
 itemForm.createForm();
-folderManipulation.addFolder();
-folderManipulation.addFolder();
+setListeners.editItem();
 

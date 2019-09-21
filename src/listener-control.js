@@ -25,6 +25,18 @@ const setListeners = {
             let newRemoveButton = newItem.querySelector('.remove');
             newRemoveButton.addEventListener('click', () => itemManipulation.removeItem(newRemoveButton.parentNode));
         });
+    },
+
+    editItem: function () {
+        let confirm = document.querySelector('#confirm');
+        confirm.addEventListener('click', (e) => {
+            let formTest = e.target.parentNode;
+            let formArray = Array.from(formTest.querySelectorAll('input'));
+            formArray.push(formTest.querySelector('#description'));
+
+            console.log(formArray);
+            formArray.forEach((item) => console.log(item.value));
+        });
     }
 };
 

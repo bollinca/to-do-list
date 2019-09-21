@@ -79,7 +79,7 @@ const folderManipulation = {
         this.container = document.querySelector('#project-menu')
     },
 
-    addFolder: function() {
+    addFolder: function () {
         let folder = document.createElement('button');
         folder.classList.add('folder');
         let folderName = prompt('Project Name?');
@@ -127,6 +127,7 @@ const itemForm = {
         descriptionInput.id = 'description';
 
         let confirmButton = document.createElement('button');
+        confirmButton.setAttribute('type', 'button');
         confirmButton.textContent = 'Confirm';
         confirmButton.id = 'confirm';
 
