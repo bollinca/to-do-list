@@ -1,6 +1,4 @@
-// let addItem = document.querySelector('#add-item');
-
-import { itemManipulation } from './dom-manip.js';
+import { itemManipulation, itemForm } from './dom-manip.js';
 
 const setListeners = {
     removeItem: function (targets) {
@@ -27,15 +25,24 @@ const setListeners = {
         });
     },
 
+    callForm: function (targets) {
+        targets.forEach(target => {
+            target.addEventListener('click', () => {
+                itemForm.createForm();
+            });
+            target.addEventListener('click', () => this.editItem());
+        });
+    },
+
     editItem: function () {
         let confirm = document.querySelector('#confirm');
-        confirm.addEventListener('click', (e) => {
-            let formTest = e.target.parentNode;
+        confirm.addEventListener('click', () => {
+            let formTest = confirm.parentNode;
             let formArray = Array.from(formTest.querySelectorAll('input'));
             formArray.push(formTest.querySelector('#description'));
 
-            console.log(formArray);
-            formArray.forEach((item) => console.log(item.value));
+            let formValues = formArray.map((item) => (item.value));
+            console.log(formValues);
         });
     }
 };

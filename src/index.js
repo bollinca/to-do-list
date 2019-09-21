@@ -10,6 +10,9 @@ let test = itemManipulation.addItem();
 let removeButtons = Array.from(document.querySelectorAll('.remove'));
 setListeners.removeItem(removeButtons);
 
+let editButtons = Array.from(document.querySelectorAll('.edit'));
+setListeners.callForm(editButtons);
+
 let gridItems = Array.from(document.querySelectorAll('.grid-item'));
 setListeners.markComplete(gridItems);
 
@@ -26,6 +29,4 @@ itemManipulation.setData(test, 'due-date');
 itemManipulation.setData(test, 'priority');
 folderManipulation.addFolder();
 folderManipulation.addFolder();
-itemForm.createForm();
-setListeners.editItem();
 

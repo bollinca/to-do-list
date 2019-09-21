@@ -23,6 +23,11 @@
     border: 3px solid black;
 }
 
+.edit {
+    position: relative;
+    left: 67%;
+}
+
 .complete {
     background-color: green;
 }

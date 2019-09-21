@@ -35,6 +35,11 @@ const itemManipulation = {
         removeButton.textContent = 'X';
         gridItem.append(removeButton);
 
+        let editButton = document.createElement('button');
+        editButton.classList.add('edit');
+        editButton.textContent = 'Edit';
+        gridItem.append(editButton);
+
         let itemName = document.createElement('h2');
         itemName.textContent = 'Hey dude';
         itemName.setAttribute('data-type', 'name');
