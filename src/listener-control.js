@@ -1,4 +1,4 @@
-import { itemManipulation, itemForm } from './dom-manip.js';
+import { itemManipulation, itemForm, folderManipulation } from './dom-manip.js';
 
 const setListeners = {
     removeItem: function (targets) {
@@ -20,7 +20,7 @@ const setListeners = {
         target.addEventListener('click', () => {
             let newItem = itemManipulation.addItem();
             newItem.addEventListener('click', () => itemManipulation.markComplete(newItem));
-            
+
             let newRemoveButton = newItem.querySelector('.remove');
             newRemoveButton.addEventListener('click', () => itemManipulation.removeItem(newRemoveButton.parentNode));
             
@@ -30,6 +30,11 @@ const setListeners = {
                 this.editItem();
             });
         });
+    },
+
+    addProject: function() {
+        let createProjectButton = document.querySelector('#create-project');
+        createProjectButton.addEventListener('click', () => folderManipulation.addFolder());
     },
 
     callForm: function (targets) {

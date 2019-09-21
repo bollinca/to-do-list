@@ -11,8 +11,12 @@ const createLayout = () => {
     projectMenu.id = 'project-menu';
     const menuTitle = document.createElement('h2');
     menuTitle.textContent = 'Projects:';
+    const makeNewProject = document.createElement('button');
+    makeNewProject.textContent = 'New Project';
+    makeNewProject.id = 'create-project';
 
     projectMenu.append(menuTitle);
+    projectMenu.append(makeNewProject);
     contentContainer.append(projectMenu);
     contentContainer.append(addItem);
     contentContainer.append(selectionGrid);

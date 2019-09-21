@@ -57,6 +57,17 @@
     font-size: 36px;
 }
 
+#create-project {
+    display: block;
+    position: absolute;
+    bottom: 20px;
+    width: 100px;
+    height: 40px;
+    left: 50%;
+    margin-left: -50px;
+    border-radius: 10px;
+}
+
 button.folder {
     display: block;
     width: 80%;

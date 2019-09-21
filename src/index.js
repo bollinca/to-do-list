@@ -20,6 +20,7 @@ let addItem = document.querySelector('#add-item');
 setListeners.addNew(addItem);
 
 folderManipulation.updateContainer();
+setListeners.addProject();
 
 
 ///testing
@@ -27,6 +28,4 @@ itemManipulation.setData(test, 'name');
 itemManipulation.setData(test, 'description');
 itemManipulation.setData(test, 'due-date');
 itemManipulation.setData(test, 'priority');
-folderManipulation.addFolder();
-folderManipulation.addFolder();
 
