@@ -60,7 +60,8 @@ const setListeners = {
             let dataChunks = targetItem.querySelectorAll(`[data-type]`);
             for (let i = 0; i < dataChunks.length; i++) {
                 dataChunks[i].textContent = formValues[i];
-            }
+            };
+            form.parentNode.removeChild(form);
         });
     }
 };
