@@ -23,7 +23,7 @@ const setListeners = {
 
             let newRemoveButton = newItem.querySelector('.remove');
             newRemoveButton.addEventListener('click', () => itemManipulation.removeItem(newRemoveButton.parentNode));
-            
+
             let newEditButton = newItem.querySelector('.edit');
             newEditButton.addEventListener('click', () => {
                 itemForm.createForm()
@@ -32,7 +32,7 @@ const setListeners = {
         });
     },
 
-    addProject: function() {
+    addProject: function () {
         let createProjectButton = document.querySelector('#create-project');
         createProjectButton.addEventListener('click', () => folderManipulation.addFolder());
     },
@@ -50,17 +50,17 @@ const setListeners = {
         let targetItem = e.target.parentNode;
         console.log(targetItem);
         let confirm = document.querySelector('#confirm');
-        let formTest = confirm.parentNode;
+        let form = confirm.parentNode;
 
-        let formArray = Array.from(formTest.querySelectorAll('input'));
-        formArray.push(formTest.querySelector('#description'));
-        
+        let formArray = Array.from(form.querySelectorAll('input'));
+        formArray.push(form.querySelector('#description'));
+
         confirm.addEventListener('click', () => {
             let formValues = formArray.map((item) => (item.value));
-            console.log(formValues);
-            let nameTest = formTest.querySelector(`[data-type=name]`);
-            // nameTest.textContent = formValues[0];
-            console.log(nameTest);
+            let dataChunks = targetItem.querySelectorAll(`[data-type]`);
+            for (let i = 0; i < dataChunks.length; i++) {
+                dataChunks[i].textContent = formValues[i];
+            }
         });
     }
 };
