@@ -57,7 +57,7 @@ const itemManipulation = {
         itemPriority.setAttribute('data-type', 'priority');
 
         let itemDescription = document.createElement('p');
-        itemDescription.textContent = 'Test desctiption';
+        itemDescription.textContent = 'Test description';
         itemDescription.setAttribute('data-type', 'description');
 
         this.selectionGrid.append(gridItem);
@@ -74,11 +74,6 @@ const itemManipulation = {
 
     markComplete: function (target) {
         target.classList.toggle('complete');
-    },
-
-    setData: function (target, dataType) {
-        let currentData = target.querySelector(`[data-type=${dataType}]`);
-        console.log(currentData.textContent);
     },
 };
 

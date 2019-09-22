@@ -5,7 +5,7 @@ createLayout();
 itemManipulation.updateProperties();
 itemManipulation.addItem();
 itemManipulation.addItem();
-let test = itemManipulation.addItem();
+itemManipulation.addItem();
 
 let removeButtons = Array.from(document.querySelectorAll('.remove'));
 setListeners.removeItem(removeButtons);
@@ -24,8 +24,5 @@ setListeners.addProject();
 
 
 ///testing
-itemManipulation.setData(test, 'name');
-itemManipulation.setData(test, 'description');
-itemManipulation.setData(test, 'due-date');
-itemManipulation.setData(test, 'priority');
+
 

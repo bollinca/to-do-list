@@ -39,22 +39,28 @@ const setListeners = {
 
     callForm: function (targets) {
         targets.forEach(target => {
-            target.addEventListener('click', () => {
+            target.addEventListener('click', (e) => {
                 itemForm.createForm();
-                this.editItem();
+                this.editItem(e);
             });
         });
     },
 
-    editItem: function () {
+    editItem: function (e) {
+        let targetItem = e.target.parentNode;
+        console.log(targetItem);
         let confirm = document.querySelector('#confirm');
-        confirm.addEventListener('click', () => {
-            let formTest = confirm.parentNode;
-            let formArray = Array.from(formTest.querySelectorAll('input'));
-            formArray.push(formTest.querySelector('#description'));
+        let formTest = confirm.parentNode;
 
+        let formArray = Array.from(formTest.querySelectorAll('input'));
+        formArray.push(formTest.querySelector('#description'));
+        
+        confirm.addEventListener('click', () => {
             let formValues = formArray.map((item) => (item.value));
             console.log(formValues);
+            let nameTest = formTest.querySelector(`[data-type=name]`);
+            // nameTest.textContent = formValues[0];
+            console.log(nameTest);
         });
     }
 };
