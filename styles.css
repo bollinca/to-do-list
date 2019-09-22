@@ -9,29 +9,37 @@
 .grid {
     display: grid;
     background-color: red;
-    grid-template-rows: repeat(auto-fit, 190px);
+    grid-template-rows: repeat(auto-fit, minmax(150px, 150px));
     grid-gap: 5px 0px;
     margin: 0px 25px 0px 275px;
     padding: 5px 0;
     height: 94vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     border: groove whitesmoke 10px;
 }
 
 .grid-item {
     background-color: blue;
     border: 3px solid black;
+    min-height: 150px;
+    overflow-y: auto;
 }
 
-.grid-item > h2, .grid-item > p, .grid-item > h3 {
-    margin-left: 10px;
+.grid-item > h2 {
+    display: block;
+    margin: 0 0 0 10px;
 }
 
-.grid-item > p[data-type='description'], .grid-item > h2 {
-    display: inline
+.grid-item > p, .grid-item > h3 {
+    margin: 5px 50px 0 10px;
+    display: inline-block
 }
 
-.grid-item > p[data-type='priority']:before {
+p[data-type='description'] {
+    display: block;
+}
+
+p[data-type='priority']::before {
     content: 'Priority Level: ';
 }
 
