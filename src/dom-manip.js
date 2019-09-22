@@ -64,7 +64,7 @@ const itemManipulation = {
         itemDescription.setAttribute('data-type', 'description');
 
         this.selectionGrid.append(gridItem);
-        gridItem.append(itemName, itemDescription, itemDue, itemPriority);
+        gridItem.append(itemName, itemDue, itemPriority, itemDescription);
         return gridItem;
     },
 
