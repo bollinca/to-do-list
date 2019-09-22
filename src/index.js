@@ -21,8 +21,3 @@ setListeners.addNew(addItem);
 
 folderManipulation.updateContainer();
 setListeners.addProject();
-
-
-///testing
-
-

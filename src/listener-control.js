@@ -48,7 +48,6 @@ const setListeners = {
 
     editItem: function (e) {
         let targetItem = e.target.parentNode;
-        console.log(targetItem);
         let confirm = document.querySelector('#confirm');
         let form = confirm.parentNode;
 

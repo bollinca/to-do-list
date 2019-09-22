@@ -45,11 +45,11 @@ const itemManipulation = {
         gridItem.append(editButton);
 
         let itemName = document.createElement('h2');
-        itemName.textContent = 'Hey dude';
+        itemName.textContent = 'Default Title';
         itemName.setAttribute('data-type', 'name');
 
         let itemDue = document.createElement('h3');
-        itemDue.textContent = '9/9/19';
+        itemDue.textContent = '9/9/2019';
         itemDue.setAttribute('data-type', 'due-date');
 
         let itemPriority = document.createElement('p');

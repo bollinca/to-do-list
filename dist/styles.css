@@ -9,18 +9,27 @@
 .grid {
     display: grid;
     background-color: red;
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(3, 200px);
-    height: 700px;
-    width: 700px;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-rows: repeat(auto-fit, 200px);
     grid-gap: 20px;
-    margin: 0px auto;
+    margin: 0px 0px 0px 250px;
     padding: 20px;
+    height: 95vh;
+    overflow-y: scroll;
+    border: groove whitesmoke 10px;
 }
 
 .grid-item {
     background-color: blue;
     border: 3px solid black;
+}
+
+.grid-item > h2, .grid-item > p, .grid-item > h3 {
+    margin-left: 10px;
+}
+
+.grid-item > h2 {
+    margin-top: 10px;
 }
 
 .edit {
@@ -44,9 +53,9 @@
     color: white;
     font-size: 36px;
     text-align: center;
-    height: 100%;
-    width: 20%;
-    min-width: 150px;
+    min-height: 100%;
+    width: 250px;
+    min-width: 250px;
     position: absolute;
     left: 0;
     top: 0;
