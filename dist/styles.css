@@ -9,11 +9,10 @@
 .grid {
     display: grid;
     background-color: red;
-    grid-template-columns: repeat(auto-fit, 200px);
     grid-template-rows: repeat(auto-fit, 190px);
-    grid-gap: 20px;
+    grid-gap: 5px 0px;
     margin: 0px 25px 0px 275px;
-    padding: 20px;
+    padding: 5px 0;
     height: 94vh;
     overflow-y: scroll;
     border: groove whitesmoke 10px;
@@ -28,6 +27,10 @@
     margin-left: 10px;
 }
 
+.grid-item > p[data-type='description'], .grid-item > h2 {
+    display: inline
+}
+
 .grid-item > p[data-type='priority']:before {
     content: 'Priority Level: ';
 }
@@ -40,9 +43,12 @@
     content: 'Due: ';
 }
 
+.remove {
+    display: inline-block;
+}
+
 .edit {
-    position: relative;
-    left: 67%;
+    display: inline-block;
 }
 
 .complete {

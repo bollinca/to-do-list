@@ -4,8 +4,9 @@ const setListeners = {
     removeItem: function (targets) {
         targets.forEach(target => {
             target.addEventListener('click', () => {
-                let gridItemToRemove = target.parentNode;
-                itemManipulation.removeItem(gridItemToRemove);
+                let itemControls = target.parentNode;
+                let entireItem = itemControls.parentNode;
+                itemManipulation.removeItem(entireItem);
             });
         });
     },
@@ -22,12 +23,12 @@ const setListeners = {
             newItem.addEventListener('click', () => itemManipulation.markComplete(newItem));
 
             let newRemoveButton = newItem.querySelector('.remove');
-            newRemoveButton.addEventListener('click', () => itemManipulation.removeItem(newRemoveButton.parentNode));
+            newRemoveButton.addEventListener('click', () => itemManipulation.removeItem(newItem));
 
             let newEditButton = newItem.querySelector('.edit');
-            newEditButton.addEventListener('click', () => {
+            newEditButton.addEventListener('click', (e) => {
                 itemForm.createForm()
-                this.editItem();
+                this.editItem(e);
             });
         });
     },
@@ -47,7 +48,8 @@ const setListeners = {
     },
 
     editItem: function (e) {
-        let targetItem = e.target.parentNode;
+        let itemControls = e.target.parentNode;
+        let targetForEdit = itemControls.parentNode;
         let confirm = document.querySelector('#confirm');
         let form = confirm.parentNode;
 
@@ -56,7 +58,7 @@ const setListeners = {
 
         confirm.addEventListener('click', () => {
             let formValues = formArray.map((item) => (item.value));
-            let dataChunks = targetItem.querySelectorAll(`[data-type]`);
+            let dataChunks = targetForEdit.querySelectorAll(`[data-type]`);
             for (let i = 0; i < dataChunks.length; i++) {
                 dataChunks[i].textContent = formValues[i];
             };

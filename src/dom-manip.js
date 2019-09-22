@@ -37,12 +37,15 @@ const itemManipulation = {
         let removeButton = document.createElement('button');
         removeButton.classList.add('remove');
         removeButton.textContent = 'X';
-        gridItem.append(removeButton);
-
+        
         let editButton = document.createElement('button');
         editButton.classList.add('edit');
         editButton.textContent = 'Edit';
-        gridItem.append(editButton);
+        
+        let itemControlsDiv = document.createElement('div');
+        itemControlsDiv.class = 'item-controls';
+        itemControlsDiv.append(removeButton, editButton);
+        gridItem.append(itemControlsDiv);
 
         let itemName = document.createElement('h2');
         itemName.textContent = 'Default Title';
@@ -61,10 +64,7 @@ const itemManipulation = {
         itemDescription.setAttribute('data-type', 'description');
 
         this.selectionGrid.append(gridItem);
-        gridItem.append(itemName);
-        gridItem.append(itemDescription);
-        gridItem.append(itemDue);
-        gridItem.append(itemPriority);
+        gridItem.append(itemName, itemDescription, itemDue, itemPriority);
         return gridItem;
     },
 
