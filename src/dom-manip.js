@@ -63,8 +63,12 @@ const itemManipulation = {
         itemDescription.textContent = 'Test description';
         itemDescription.setAttribute('data-type', 'description');
 
+        let completeCheckbox = document.createElement('input');
+        completeCheckbox.setAttribute('type', 'checkbox');
+        completeCheckbox.classList.add('complete-checkbox');
+
         this.selectionGrid.append(gridItem);
-        gridItem.append(itemName, itemDue, itemPriority, itemDescription);
+        gridItem.append(itemName, itemDue, itemPriority, itemDescription, completeCheckbox);
         return gridItem;
     },
 

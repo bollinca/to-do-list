@@ -63,6 +63,17 @@ p[data-type='priority']::before {
     background-color: green;
 }
 
+.complete-checkbox:before {
+    content: 'Complete? ';
+    font-size: 16px;
+    padding-left: 20px;
+}
+
+.complete-checkbox {
+    width: 15px;
+    margin: 10px;
+}
+
 #add-item {
     display: block;
     width: 80px;

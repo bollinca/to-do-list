@@ -13,14 +13,18 @@ const setListeners = {
 
     markComplete: function (targets) {
         targets.forEach(target => {
-            target.addEventListener('click', () => itemManipulation.markComplete(target));
+            let completeCheckbox = target.querySelector('.complete-checkbox');
+            completeCheckbox.addEventListener('click', () => {
+                itemManipulation.markComplete(target);
+            });
         });
     },
 
     addNew: function (target) {
         target.addEventListener('click', () => {
             let newItem = itemManipulation.addItem();
-            newItem.addEventListener('click', () => itemManipulation.markComplete(newItem));
+            let newCheckbox = newItem.querySelector('.complete-checkbox');
+            newCheckbox.addEventListener('click', () => itemManipulation.markComplete(newItem));
 
             let newRemoveButton = newItem.querySelector('.remove');
             newRemoveButton.addEventListener('click', () => itemManipulation.removeItem(newItem));
