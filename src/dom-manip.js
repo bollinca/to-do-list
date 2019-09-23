@@ -139,17 +139,8 @@ const itemForm = {
         confirmButton.textContent = 'Confirm';
         confirmButton.id = 'confirm';
 
-        form.append(nameLabel);
-        form.append(nameInput);
-        form.append(priorityLabel);
-        form.append(priorityInput);
-        form.append(dueLabel);
-        form.append(dueInput);
-        form.append(descriptionLabel);
-        form.append(descriptionInput);
-        form.append(confirmButton);
+        form.append(nameLabel, nameInput, dueLabel, dueInput, priorityLabel, priorityInput, descriptionLabel, descriptionInput, confirmButton);
 
-        console.log(form);
         this.contentContainer.append(form);
     },
 };
