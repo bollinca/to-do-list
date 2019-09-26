@@ -92,7 +92,9 @@ const folderManipulation = {
         folder.classList.add('folder');
         let folderName = prompt('Project Name?');
         folder.textContent = folderName;
+        folder.setAttribute('data-project-name', `${folderName}`);
         this.container.append(folder);
+        console.log(folder.attributes)
     },
     // 
     // removeFolder: function() {

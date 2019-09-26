@@ -3,6 +3,10 @@ import { setListeners } from './listener-control.js';
 
 createLayout();
 itemManipulation.updateProperties();
+
+folderManipulation.updateContainer();
+folderManipulation.addFolder();
+
 itemManipulation.addItem();
 itemManipulation.addItem();
 itemManipulation.addItem();
