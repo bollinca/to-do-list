@@ -31,8 +31,13 @@ const itemManipulation = {
     },
 
     addItem: function () {
+        let activeFolder = document.querySelector('.folder[data-active]')
+        let activeFolderName = activeFolder.attributes['data-project-name'].value;
+
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item', 'to-do');
+        gridItem.setAttribute('data-parent-project', `${activeFolderName}`)
+        console.log(gridItem.attributes);
 
         let removeButton = document.createElement('button');
         removeButton.classList.add('remove');
@@ -93,8 +98,9 @@ const folderManipulation = {
         let folderName = prompt('Project Name?');
         folder.textContent = folderName;
         folder.setAttribute('data-project-name', `${folderName}`);
+        folder.toggleAttribute('data-active');
         this.container.append(folder);
-        console.log(folder.attributes)
+        console.log(folder.attributes['data-project-name'].value);
     },
     // 
     // removeFolder: function() {
