@@ -31,8 +31,8 @@ const itemManipulation = {
     },
 
     addItem: function () {
-        let activeFolder = document.querySelector('.folder[data-active]')
-        let activeFolderName = activeFolder.attributes['data-project-name'].value;
+        let activeFolder = (() => document.querySelector('.folder[data-active]'))();
+        let activeFolderName = (() => activeFolder.attributes['data-project-name'].value)();
 
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item', 'to-do');
@@ -42,11 +42,11 @@ const itemManipulation = {
         let removeButton = document.createElement('button');
         removeButton.classList.add('remove');
         removeButton.textContent = 'X';
-        
+
         let editButton = document.createElement('button');
         editButton.classList.add('edit');
         editButton.textContent = 'Edit';
-        
+
         let itemControlsDiv = document.createElement('div');
         itemControlsDiv.class = 'item-controls';
         itemControlsDiv.append(removeButton, editButton);
@@ -93,14 +93,21 @@ const folderManipulation = {
     },
 
     addFolder: function () {
+        if (document.querySelector('.folder[data-active]')) {
+            (() => {
+                let oldActiveFolder = document.querySelector('.folder[data-active]');
+                oldActiveFolder.toggleAttribute('data-active');
+            })();
+        };
+
         let folder = document.createElement('button');
         folder.classList.add('folder');
         let folderName = prompt('Project Name?');
         folder.textContent = folderName;
         folder.setAttribute('data-project-name', `${folderName}`);
         folder.toggleAttribute('data-active');
+
         this.container.append(folder);
-        console.log(folder.attributes['data-project-name'].value);
     },
     // 
     // removeFolder: function() {
