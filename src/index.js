@@ -25,3 +25,4 @@ setListeners.addNew(addItem);
 
 folderManipulation.updateContainer();
 setListeners.addProject();
+folderManipulation.toggleContentDisp('test');

@@ -109,6 +109,15 @@ const folderManipulation = {
 
         this.container.append(folder);
     },
+
+    toggleContentDisp: function (activeFolderName) {
+        let allItems = Array.from(document.querySelectorAll(`.grid-item`));
+        allItems.forEach(item => {
+            if (item.attributes['data-parent-project'].value === activeFolderName) {
+                console.log('Here we go baby');
+            }
+    });
+},
     // 
     // removeFolder: function() {
     // 
