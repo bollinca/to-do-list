@@ -31,12 +31,13 @@ const itemManipulation = {
     },
 
     addItem: function () {
-        let activeFolder = (() => document.querySelector('.folder[data-active]'))();
+        let activeFolder = (() => document.querySelector('.folder[data-folder-active]'))();
         let activeFolderName = (() => activeFolder.attributes['data-project-name'].value)();
 
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item', 'to-do');
         gridItem.setAttribute('data-parent-project', `${activeFolderName}`)
+        gridItem.toggleAttribute('data-item-active');
         console.log(gridItem.attributes);
 
         let removeButton = document.createElement('button');
@@ -93,10 +94,10 @@ const folderManipulation = {
     },
 
     addFolder: function () {
-        if (document.querySelector('.folder[data-active]')) {
+        if (document.querySelector('.folder[data-folder-active]')) {
             (() => {
-                let oldActiveFolder = document.querySelector('.folder[data-active]');
-                oldActiveFolder.toggleAttribute('data-active');
+                let oldActiveFolder = document.querySelector('.folder[data-folder-active]');
+                oldActiveFolder.toggleAttribute('data-folder-active');
             })();
         };
 
@@ -105,16 +106,18 @@ const folderManipulation = {
         let folderName = prompt('Project Name?');
         folder.textContent = folderName;
         folder.setAttribute('data-project-name', `${folderName}`);
-        folder.toggleAttribute('data-active');
+        folder.toggleAttribute('data-folder-active');
 
         this.container.append(folder);
     },
 
-    toggleContentDisp: function (activeFolderName) {
+    hideContent: function (activeFolderName) {
         let allItems = Array.from(document.querySelectorAll(`.grid-item`));
         allItems.forEach(item => {
             if (item.attributes['data-parent-project'].value === activeFolderName) {
-                console.log('Here we go baby');
+                item.toggleAttribute('data-item-active');
+                item.toggleAttribute('data-item-hidden');
+                console.log(item.attributes);
             }
     });
 },

@@ -25,6 +25,10 @@
     overflow-y: auto;
 }
 
+.grid-item[data-item-hidden] {
+    display: none;
+}
+
 .grid-item > h2 {
     display: block;
     margin: 0 0 0 10px;
