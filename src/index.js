@@ -8,21 +8,14 @@ folderManipulation.updateContainer();
 folderManipulation.addFolder();
 
 itemManipulation.addItem();
-itemManipulation.addItem();
-itemManipulation.addItem();
 
-let removeButtons = Array.from(document.querySelectorAll('.remove'));
-setListeners.removeItem(removeButtons);
-
-let editButtons = Array.from(document.querySelectorAll('.edit'));
-setListeners.callForm(editButtons);
-
-let gridItems = Array.from(document.querySelectorAll('.grid-item'));
-setListeners.markComplete(gridItems);
-
-let addItem = document.querySelector('#add-item');
-setListeners.addNew(addItem);
+setListeners.removeItem();
+setListeners.callForm();
+setListeners.markComplete();
+setListeners.addNew();
 
 folderManipulation.updateContainer();
+
 setListeners.addProject();
+
 folderManipulation.hideContent('test');
