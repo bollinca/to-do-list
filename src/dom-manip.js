@@ -37,7 +37,6 @@ const itemManipulation = {
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item', 'to-do');
         gridItem.setAttribute('data-parent-project', `${activeFolderName}`)
-        gridItem.toggleAttribute('data-item-active');
         console.log(gridItem.attributes);
 
         let removeButton = document.createElement('button');
@@ -114,10 +113,11 @@ const folderManipulation = {
     hideContent: function (activeFolderName) {
         let allItems = Array.from(document.querySelectorAll(`.grid-item`));
         allItems.forEach(item => {
-            if (item.attributes['data-parent-project'].value === activeFolderName) {
-                item.toggleAttribute('data-item-active');
+            if (item.attributes['data-parent-project'].value !== activeFolderName) {
                 item.toggleAttribute('data-item-hidden');
                 console.log(item.attributes);
+            } else if (item.attributes['data-item-hidden']) {
+                item.toggleAttribute('data-item-hidden');
             }
     });
 },
