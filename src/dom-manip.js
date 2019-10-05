@@ -1,3 +1,5 @@
+import { setListeners } from "./listener-control";
+
 const createLayout = () => {
     const contentContainer = document.querySelector('#content');
     const selectionGrid = document.createElement('div');
@@ -106,7 +108,10 @@ const folderManipulation = {
         folder.textContent = folderName;
         folder.setAttribute('data-project-name', `${folderName}`);
         folder.toggleAttribute('data-folder-active');
-
+        folder.addEventListener('click', (folderName) => {
+            this.hideContent(folderName);
+            setListeners.hideOtherFolderItems(folder);
+        });
         this.container.append(folder);
     },
 
@@ -118,8 +123,8 @@ const folderManipulation = {
             } else if (item.attributes['data-parent-project'].value === activeFolderName && item.attributes['data-item-hidden']) {
                 item.toggleAttribute('data-item-hidden');
             }
-    });
-},
+        });
+    },
     // 
     // removeFolder: function() {
     // 

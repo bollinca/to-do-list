@@ -74,13 +74,13 @@ const setListeners = {
         });
     },
 
-    hideOtherFolderItems: function () {
-        let folders = Array.from(document.querySelectorAll('.folder'));
-        folders.forEach(folder => {
-            folder.addEventListener('click', (e) => {
-                folderManipulation.hideContent(e.target.attributes['data-project-name'].value);
-            })
-        });
+    hideOtherFolderItems: function (givenFolder) {
+        // let folders = Array.from(document.querySelectorAll('.folder'));
+        // folders.forEach(folder => {
+        givenFolder.addEventListener('click', (e) => {
+            folderManipulation.hideContent(e.target.attributes['data-project-name'].value);
+        })
+        // });
     },
 };
 

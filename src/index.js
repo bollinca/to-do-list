@@ -18,4 +18,4 @@ folderManipulation.updateContainer();
 
 setListeners.addProject();
 
-setListeners.hideOtherFolderItems();
+// setListeners.hideOtherFolderItems();
