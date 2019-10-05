@@ -113,10 +113,9 @@ const folderManipulation = {
     hideContent: function (activeFolderName) {
         let allItems = Array.from(document.querySelectorAll(`.grid-item`));
         allItems.forEach(item => {
-            if (item.attributes['data-parent-project'].value !== activeFolderName) {
+            if (item.attributes['data-parent-project'].value !== activeFolderName && item.hasAttribute('data-item-hidden') === false) {
                 item.toggleAttribute('data-item-hidden');
-                console.log(item.attributes);
-            } else if (item.attributes['data-item-hidden']) {
+            } else if (item.attributes['data-parent-project'].value === activeFolderName && item.attributes['data-item-hidden']) {
                 item.toggleAttribute('data-item-hidden');
             }
     });
