@@ -39,7 +39,6 @@ const itemManipulation = {
         let gridItem = document.createElement('div');
         gridItem.classList.add('grid-item', 'to-do');
         gridItem.setAttribute('data-parent-project', `${activeFolderName}`)
-        console.log(gridItem.attributes);
 
         let removeButton = document.createElement('button');
         removeButton.classList.add('remove');
@@ -104,9 +103,8 @@ const folderManipulation = {
 
         let folder = document.createElement('button');
         folder.classList.add('folder');
-        folder.textcontent = prompt('Project Name?');
-        folder.textContent = folder.textcontent;
-        folder.setAttribute('data-project-name', `${folder.textcontent}`);
+        folder.textContent = prompt('Project Name?');
+        folder.setAttribute('data-project-name', `${folder.textContent}`);
         folder.toggleAttribute('data-folder-active');
         folder.addEventListener('click', (e) => {
             this.hideContent(e.target.textContent);
@@ -117,8 +115,6 @@ const folderManipulation = {
     hideContent: function (activeFolderName) {
         let allItems = Array.from(document.querySelectorAll(`.grid-item`));
         allItems.forEach(item => {
-            console.log(activeFolderName);
-            console.log(item.attributes['data-parent-project'].value === activeFolderName);
             if (item.attributes['data-parent-project'].value !== activeFolderName && item.hasAttribute('data-item-hidden') === false) {
                 item.toggleAttribute('data-item-hidden');
             } else if (item.attributes['data-parent-project'].value === activeFolderName && item.attributes['data-item-hidden']) {
