@@ -73,15 +73,6 @@ const setListeners = {
             form.parentNode.removeChild(form);
         });
     },
-
-    hideOtherFolderItems: function (givenFolder) {
-        // let folders = Array.from(document.querySelectorAll('.folder'));
-        // folders.forEach(folder => {
-        givenFolder.addEventListener('click', (e) => {
-            folderManipulation.hideContent(e.target.attributes['data-project-name'].value);
-        })
-        // });
-    },
 };
 
 export { setListeners };

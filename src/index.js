@@ -17,5 +17,3 @@ setListeners.addNew();
 folderManipulation.updateContainer();
 
 setListeners.addProject();
-
-// setListeners.hideOtherFolderItems();
