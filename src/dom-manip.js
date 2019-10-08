@@ -1,44 +1,42 @@
-import { setListeners } from "./listener-control";
-
 const createLayout = () => {
-    const contentContainer = document.querySelector('#content');
-    const selectionGrid = document.createElement('div');
-    selectionGrid.classList.add('grid');
+    const mainContainer = document.querySelector('#content');
+    const toDoGrid = document.createElement('div');
+    toDoGrid.classList.add('grid');
 
-    const addItem = document.createElement('button');
-    addItem.id = 'add-item';
-    addItem.textContent = 'Add Item';
+    const toDoButton = document.createElement('button');
+    toDoButton.id = 'add-item';
+    toDoButton.textContent = 'Add Item';
 
     const projectMenu = document.createElement('div');
     projectMenu.id = 'project-menu';
-    const menuTitle = document.createElement('h2');
-    menuTitle.textContent = 'Projects:';
-    const makeNewProject = document.createElement('button');
-    makeNewProject.textContent = 'New Project';
-    makeNewProject.id = 'create-project';
+    const pMenuTitle = document.createElement('h2');
+    pMenuTitle.textContent = 'Projects:';
+    const projectButton = document.createElement('button');
+    projectButton.textContent = 'New Project';
+    projectButton.id = 'create-project';
 
-    projectMenu.append(menuTitle);
-    projectMenu.append(makeNewProject);
-    contentContainer.append(projectMenu);
-    contentContainer.append(addItem);
-    contentContainer.append(selectionGrid);
+    projectMenu.append(pMenuTitle);
+    projectMenu.append(projectButton);
+    mainContainer.append(projectMenu);
+    mainContainer.append(toDoButton);
+    mainContainer.append(toDoGrid);
 };
 
 const itemManipulation = {
-    contentContainer: document.querySelector('#content'),
-    selectionGrid: null,
+    mainContainer: document.querySelector('#content'),
+    toDoGrid: null,
 
     updateProperties: function () {
-        this.selectionGrid = document.querySelector('.grid');
+        this.toDoGrid = document.querySelector('.grid');
     },
 
-    addItem: function () {
+    addToDo: function () {
         let activeFolder = (() => document.querySelector('.folder[data-folder-active]'))();
         let activeFolderName = (() => activeFolder.attributes['data-project-name'].value)();
 
-        let gridItem = document.createElement('div');
-        gridItem.classList.add('grid-item', 'to-do');
-        gridItem.setAttribute('data-parent-project', `${activeFolderName}`)
+        let toDoContainer = document.createElement('div');
+        toDoContainer.classList.add('grid-item', 'to-do');
+        toDoContainer.setAttribute('data-parent-project', `${activeFolderName}`)
 
         let removeButton = document.createElement('button');
         removeButton.classList.add('remove');
@@ -51,7 +49,7 @@ const itemManipulation = {
         let itemControlsDiv = document.createElement('div');
         itemControlsDiv.class = 'item-controls';
         itemControlsDiv.append(removeButton, editButton);
-        gridItem.append(itemControlsDiv);
+        toDoContainer.append(itemControlsDiv);
 
         let itemName = document.createElement('h2');
         itemName.textContent = 'Default Title';
@@ -73,9 +71,9 @@ const itemManipulation = {
         completeCheckbox.setAttribute('type', 'checkbox');
         completeCheckbox.classList.add('complete-checkbox');
 
-        this.selectionGrid.append(gridItem);
-        gridItem.append(itemName, itemDue, itemPriority, itemDescription, completeCheckbox);
-        return gridItem;
+        this.toDoGrid.append(toDoContainer);
+        toDoContainer.append(itemName, itemDue, itemPriority, itemDescription, completeCheckbox);
+        return toDoContainer;
     },
 
     removeItem: function (target) {

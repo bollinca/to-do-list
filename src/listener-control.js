@@ -25,7 +25,7 @@ const setListeners = {
     addNew: function (target) {
         let addItem = document.querySelector('#add-item');
         addItem.addEventListener('click', () => {
-            let newItem = itemManipulation.addItem();
+            let newItem = itemManipulation.addToDo();
             let newCheckbox = newItem.querySelector('.complete-checkbox');
             newCheckbox.addEventListener('click', () => itemManipulation.markComplete(newItem));
 
