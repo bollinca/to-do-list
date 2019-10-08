@@ -1,4 +1,4 @@
-import { itemManipulation, itemForm, folderManipulation } from './dom-manip.js';
+import { toDoController, itemForm, projectController } from './dom-manip.js';
 
 const setListeners = {
     removeItem: function () {
@@ -7,7 +7,7 @@ const setListeners = {
             button.addEventListener('click', () => {
                 let itemControls = button.parentNode;
                 let entireItem = itemControls.parentNode;
-                itemManipulation.removeItem(entireItem);
+                toDoController.remove(entireItem);
             });
         });
     },
@@ -17,7 +17,7 @@ const setListeners = {
         gridItems.forEach(item => {
             let completeCheckbox = item.querySelector('.complete-checkbox');
             completeCheckbox.addEventListener('click', () => {
-                itemManipulation.markComplete(item);
+                toDoController.markComplete(item);
             });
         });
     },
@@ -25,12 +25,12 @@ const setListeners = {
     addNew: function (target) {
         let addItem = document.querySelector('#add-item');
         addItem.addEventListener('click', () => {
-            let newItem = itemManipulation.addToDo();
+            let newItem = toDoController.addToDo();
             let newCheckbox = newItem.querySelector('.complete-checkbox');
-            newCheckbox.addEventListener('click', () => itemManipulation.markComplete(newItem));
+            newCheckbox.addEventListener('click', () => toDoController.markComplete(newItem));
 
             let newRemoveButton = newItem.querySelector('.remove');
-            newRemoveButton.addEventListener('click', () => itemManipulation.removeItem(newItem));
+            newRemoveButton.addEventListener('click', () => toDoController.remove(newItem));
 
             let newEditButton = newItem.querySelector('.edit');
             newEditButton.addEventListener('click', (e) => {
@@ -42,7 +42,7 @@ const setListeners = {
 
     addProject: function () {
         let createProjectButton = document.querySelector('#create-project');
-        createProjectButton.addEventListener('click', () => folderManipulation.addFolder());
+        createProjectButton.addEventListener('click', () => projectController.addProject());
     },
 
     callForm: function () {

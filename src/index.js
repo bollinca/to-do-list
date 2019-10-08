@@ -1,19 +1,19 @@
-import { createLayout, itemManipulation, folderManipulation} from './dom-manip.js';
+import { createLayout, toDoController, projectController} from './dom-manip.js';
 import { setListeners } from './listener-control.js';
 
 createLayout();
-itemManipulation.updateProperties();
+toDoController.defineGrid();
 
-folderManipulation.updateContainer();
-folderManipulation.addFolder();
+projectController.updateProjMenu();
+projectController.addProject();
 
-itemManipulation.addToDo();
+toDoController.addToDo();
 
 setListeners.removeItem();
 setListeners.callForm();
 setListeners.markComplete();
 setListeners.addNew();
 
-folderManipulation.updateContainer();
+projectController.updateProjMenu();
 
 setListeners.addProject();

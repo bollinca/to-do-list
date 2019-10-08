@@ -22,11 +22,11 @@ const createLayout = () => {
     mainContainer.append(toDoGrid);
 };
 
-const itemManipulation = {
+const toDoController = {
     mainContainer: document.querySelector('#content'),
     toDoGrid: null,
 
-    updateProperties: function () {
+    defineGrid: function () {
         this.toDoGrid = document.querySelector('.grid');
     },
 
@@ -38,85 +38,85 @@ const itemManipulation = {
         toDoContainer.classList.add('grid-item', 'to-do');
         toDoContainer.setAttribute('data-parent-project', `${activeFolderName}`)
 
-        let removeButton = document.createElement('button');
-        removeButton.classList.add('remove');
-        removeButton.textContent = 'X';
+        let toDoDelete = document.createElement('button');
+        toDoDelete.classList.add('remove');
+        toDoDelete.textContent = 'X';
 
-        let editButton = document.createElement('button');
-        editButton.classList.add('edit');
-        editButton.textContent = 'Edit';
+        let toDoEdit = document.createElement('button');
+        toDoEdit.classList.add('edit');
+        toDoEdit.textContent = 'Edit';
 
-        let itemControlsDiv = document.createElement('div');
-        itemControlsDiv.class = 'item-controls';
-        itemControlsDiv.append(removeButton, editButton);
-        toDoContainer.append(itemControlsDiv);
+        let toDoControls = document.createElement('div');
+        toDoControls.class = 'item-controls';
+        toDoControls.append(toDoDelete, toDoEdit);
+        toDoContainer.append(toDoControls);
 
-        let itemName = document.createElement('h2');
-        itemName.textContent = 'Default Title';
-        itemName.setAttribute('data-type', 'name');
+        let toDoName = document.createElement('h2');
+        toDoName.textContent = 'Default Title';
+        toDoName.setAttribute('data-type', 'name');
 
-        let itemDue = document.createElement('h3');
-        itemDue.textContent = '9/9/2019';
-        itemDue.setAttribute('data-type', 'due-date');
+        let toDoDueDate = document.createElement('h3');
+        toDoDueDate.textContent = '9/9/2019';
+        toDoDueDate.setAttribute('data-type', 'due-date');
 
-        let itemPriority = document.createElement('p');
-        itemPriority.textContent = '5';
-        itemPriority.setAttribute('data-type', 'priority');
+        let toDoPriority = document.createElement('p');
+        toDoPriority.textContent = '5';
+        toDoPriority.setAttribute('data-type', 'priority');
 
-        let itemDescription = document.createElement('p');
-        itemDescription.textContent = 'Test description';
-        itemDescription.setAttribute('data-type', 'description');
+        let toDoDescription = document.createElement('p');
+        toDoDescription.textContent = 'Test description';
+        toDoDescription.setAttribute('data-type', 'description');
 
-        let completeCheckbox = document.createElement('input');
-        completeCheckbox.setAttribute('type', 'checkbox');
-        completeCheckbox.classList.add('complete-checkbox');
+        let toDoCheckbox = document.createElement('input');
+        toDoCheckbox.setAttribute('type', 'checkbox');
+        toDoCheckbox.classList.add('complete-checkbox');
 
         this.toDoGrid.append(toDoContainer);
-        toDoContainer.append(itemName, itemDue, itemPriority, itemDescription, completeCheckbox);
+        toDoContainer.append(toDoName, toDoDueDate, toDoPriority, toDoDescription, toDoCheckbox);
         return toDoContainer;
     },
 
-    removeItem: function (target) {
-        target.parentNode.removeChild(target);
+    remove: function (toDo) {
+        toDo.parentNode.removeChild(toDo);
     },
 
-    markComplete: function (target) {
-        target.classList.toggle('complete');
+    markComplete: function (toDo) {
+        toDo.classList.toggle('complete');
     },
 };
 
-const folderManipulation = {
-    container: null,
-    updateContainer: function () {
-        this.container = document.querySelector('#project-menu')
+const projectController = {
+    projectMenu: null,
+    updateProjMenu: function () {
+        this.projectMenu = document.querySelector('#project-menu')
     },
 
-    addFolder: function () {
+    addProject: function () {
         if (document.querySelector('.folder[data-folder-active]')) {
             (() => {
-                let oldActiveFolder = document.querySelector('.folder[data-folder-active]');
-                oldActiveFolder.toggleAttribute('data-folder-active');
+                let oldActiveProject = document.querySelector('.folder[data-folder-active]');
+                oldActiveProject.toggleAttribute('data-folder-active');
             })();
         };
 
-        let folder = document.createElement('button');
-        folder.classList.add('folder');
-        folder.textContent = prompt('Project Name?');
-        folder.setAttribute('data-project-name', `${folder.textContent}`);
-        folder.toggleAttribute('data-folder-active');
-        folder.addEventListener('click', (e) => {
-            this.hideContent(e.target.textContent);
+        let project = document.createElement('button');
+        project.classList.add('folder');
+        project.textContent = prompt('Project Name?');
+        project.setAttribute('data-project-name', `${project.textContent}`);
+        project.toggleAttribute('data-folder-active');
+        project.addEventListener('click', (e) => {
+            this.hideInactiveToDos(e.target.textContent);
         });
-        this.container.append(folder);
+        this.projectMenu.append(project);
     },
 
-    hideContent: function (activeFolderName) {
-        let allItems = Array.from(document.querySelectorAll(`.grid-item`));
-        allItems.forEach(item => {
-            if (item.attributes['data-parent-project'].value !== activeFolderName && item.hasAttribute('data-item-hidden') === false) {
-                item.toggleAttribute('data-item-hidden');
-            } else if (item.attributes['data-parent-project'].value === activeFolderName && item.attributes['data-item-hidden']) {
-                item.toggleAttribute('data-item-hidden');
+    hideInactiveToDos: function (activeFolderName) {
+        let allToDos = Array.from(document.querySelectorAll(`.grid-item`));
+        allToDos.forEach(toDo => {
+            if (toDo.attributes['data-parent-project'].value !== activeFolderName && toDo.hasAttribute('data-item-hidden') === false) {
+                toDo.toggleAttribute('data-item-hidden');
+            } else if (toDo.attributes['data-parent-project'].value === activeFolderName && toDo.attributes['data-item-hidden']) {
+                toDo.toggleAttribute('data-item-hidden');
             }
         });
     },
@@ -171,4 +171,4 @@ const itemForm = {
     },
 };
 
-export { itemManipulation, createLayout, folderManipulation, itemForm };
+export { toDoController, createLayout, projectController, itemForm };
