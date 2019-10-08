@@ -9,11 +9,11 @@ projectController.addProject();
 
 toDoController.addToDo();
 
-setListeners.removeItem();
-setListeners.callForm();
-setListeners.markComplete();
-setListeners.addNew();
+setListeners.toDoCreation();
+setListeners.toDoDeletion();
+setListeners.toDoCompletion();
+setListeners.formSummoning();
 
 projectController.updateProjMenu();
 
-setListeners.addProject();
+setListeners.projectCreation();

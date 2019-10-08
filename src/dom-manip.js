@@ -38,17 +38,17 @@ const toDoController = {
         toDoContainer.classList.add('grid-item', 'to-do');
         toDoContainer.setAttribute('data-parent-project', `${activeFolderName}`)
 
-        let toDoDelete = document.createElement('button');
-        toDoDelete.classList.add('remove');
-        toDoDelete.textContent = 'X';
+        let toDoDeleter = document.createElement('button');
+        toDoDeleter.classList.add('remove');
+        toDoDeleter.textContent = 'X';
 
-        let toDoEdit = document.createElement('button');
-        toDoEdit.classList.add('edit');
-        toDoEdit.textContent = 'Edit';
+        let toDoEditor = document.createElement('button');
+        toDoEditor.classList.add('edit');
+        toDoEditor.textContent = 'Edit';
 
         let toDoControls = document.createElement('div');
         toDoControls.class = 'item-controls';
-        toDoControls.append(toDoDelete, toDoEdit);
+        toDoControls.append(toDoDeleter, toDoEditor);
         toDoContainer.append(toDoControls);
 
         let toDoName = document.createElement('h2');

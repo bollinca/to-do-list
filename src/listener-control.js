@@ -1,54 +1,54 @@
 import { toDoController, toDoForm, projectController } from './dom-manip.js';
 
 const setListeners = {
-    removeItem: function () {
-        let removeButtons = Array.from(document.querySelectorAll('.remove'));
-        removeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                let itemControls = button.parentNode;
-                let entireItem = itemControls.parentNode;
-                toDoController.remove(entireItem);
+    toDoDeletion: function () {
+        let toDoDeleters = Array.from(document.querySelectorAll('.remove'));
+        toDoDeleters.forEach(remover => {
+            remover.addEventListener('click', () => {
+                let toDoControls = remover.parentNode;
+                let toDo = toDoControls.parentNode;
+                toDoController.remove(toDo);
             });
         });
     },
 
-    markComplete: function () {
-        let gridItems = Array.from(document.querySelectorAll('.grid-item'));
-        gridItems.forEach(item => {
-            let completeCheckbox = item.querySelector('.complete-checkbox');
-            completeCheckbox.addEventListener('click', () => {
-                toDoController.markComplete(item);
+    toDoCompletion: function () {
+        let toDoArray = Array.from(document.querySelectorAll('.grid-item'));
+        toDoArray.forEach(toDo => {
+            let toDoCheckbox = toDo.querySelector('.complete-checkbox');
+            toDoCheckbox.addEventListener('click', () => {
+                toDoController.markComplete(toDo);
             });
         });
     },
 
-    addNew: function (target) {
-        let addItem = document.querySelector('#add-item');
-        addItem.addEventListener('click', () => {
-            let newItem = toDoController.addToDo();
-            let newCheckbox = newItem.querySelector('.complete-checkbox');
-            newCheckbox.addEventListener('click', () => toDoController.markComplete(newItem));
+    toDoCreation: function () {
+        let toDoCreator = document.querySelector('#add-item');
+        toDoCreator.addEventListener('click', () => {
+            let newToDo = toDoController.addToDo();
+            let newCompleter = newToDo.querySelector('.complete-checkbox');
+            newCompleter.addEventListener('click', () => toDoController.markComplete(newToDo));
 
-            let newRemoveButton = newItem.querySelector('.remove');
-            newRemoveButton.addEventListener('click', () => toDoController.remove(newItem));
+            let newDeleter = newToDo.querySelector('.remove');
+            newDeleter.addEventListener('click', () => toDoController.remove(newToDo));
 
-            let newEditButton = newItem.querySelector('.edit');
-            newEditButton.addEventListener('click', (e) => {
+            let newEditor = newToDo.querySelector('.edit');
+            newEditor.addEventListener('click', (e) => {
                 toDoForm.display()
                 this.editItem(e);
             });
         });
     },
 
-    addProject: function () {
+    projectCreation: function () {
         let createProjectButton = document.querySelector('#create-project');
         createProjectButton.addEventListener('click', () => projectController.addProject());
     },
 
-    callForm: function () {
-        let editButtons = Array.from(document.querySelectorAll('.edit'));
-        editButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
+    formSummoning: function () {
+        let toDoEditors = Array.from(document.querySelectorAll('.edit'));
+        toDoEditors.forEach(editor => {
+            editor.addEventListener('click', (e) => {
                 toDoForm.display();
                 this.editItem(e);
             });
@@ -57,18 +57,18 @@ const setListeners = {
 
     editItem: function (e) {
         let itemControls = e.target.parentNode;
-        let targetForEdit = itemControls.parentNode;
-        let confirm = document.querySelector('#confirm');
-        let form = confirm.parentNode;
+        let formTarget = itemControls.parentNode;
+        let formConfirm = document.querySelector('#confirm');
+        let form = formConfirm.parentNode;
 
-        let formArray = Array.from(form.querySelectorAll('input'));
-        formArray.push(form.querySelector('#description'));
+        let userInputs = Array.from(form.querySelectorAll('input'));
+        userInputs.push(form.querySelector('#description'));
 
-        confirm.addEventListener('click', () => {
-            let formValues = formArray.map((item) => (item.value));
-            let dataChunks = targetForEdit.querySelectorAll(`[data-type]`);
-            for (let i = 0; i < dataChunks.length; i++) {
-                dataChunks[i].textContent = formValues[i];
+        formConfirm.addEventListener('click', () => {
+            let userData = userInputs.map((input) => (input.value));
+            let dataDisplays = formTarget.querySelectorAll(`[data-type]`);
+            for (let i = 0; i < dataDisplays.length; i++) {
+                dataDisplays[i].textContent = userData[i];
             };
             form.parentNode.removeChild(form);
         });
