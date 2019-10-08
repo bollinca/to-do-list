@@ -1,4 +1,4 @@
-import { toDoController, itemForm, projectController } from './dom-manip.js';
+import { toDoController, toDoForm, projectController } from './dom-manip.js';
 
 const setListeners = {
     removeItem: function () {
@@ -34,7 +34,7 @@ const setListeners = {
 
             let newEditButton = newItem.querySelector('.edit');
             newEditButton.addEventListener('click', (e) => {
-                itemForm.createForm()
+                toDoForm.display()
                 this.editItem(e);
             });
         });
@@ -49,7 +49,7 @@ const setListeners = {
         let editButtons = Array.from(document.querySelectorAll('.edit'));
         editButtons.forEach(button => {
             button.addEventListener('click', (e) => {
-                itemForm.createForm();
+                toDoForm.display();
                 this.editItem(e);
             });
         });

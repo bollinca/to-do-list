@@ -126,10 +126,10 @@ const projectController = {
     // }
 }
 
-const itemForm = {
-    contentContainer: document.querySelector('#content'),
+const toDoForm = {
+    mainContainer: document.querySelector('#content'),
 
-    createForm: function () {
+    display: function () {
         let form = document.createElement('form');
         form.id = 'item-form';
 
@@ -160,15 +160,15 @@ const itemForm = {
         let descriptionInput = document.createElement('textarea');
         descriptionInput.id = 'description';
 
-        let confirmButton = document.createElement('button');
-        confirmButton.setAttribute('type', 'button');
-        confirmButton.textContent = 'Confirm';
-        confirmButton.id = 'confirm';
+        let formConfirm = document.createElement('button');
+        formConfirm.setAttribute('type', 'button');
+        formConfirm.textContent = 'Confirm';
+        formConfirm.id = 'confirm';
 
-        form.append(nameLabel, nameInput, dueLabel, dueInput, priorityLabel, priorityInput, descriptionLabel, descriptionInput, confirmButton);
+        form.append(nameLabel, nameInput, dueLabel, dueInput, priorityLabel, priorityInput, descriptionLabel, descriptionInput, formConfirm);
 
-        this.contentContainer.append(form);
+        this.mainContainer.append(form);
     },
 };
 
-export { toDoController, createLayout, projectController, itemForm };
+export { toDoController, createLayout, projectController, toDoForm};
