@@ -13,7 +13,4 @@ setListeners.toDoCreation();
 setListeners.toDoDeletion();
 setListeners.toDoCompletion();
 setListeners.formSummoning();
-
-projectController.updateProjMenu();
-
 setListeners.projectCreation();

@@ -40,9 +40,23 @@ const setListeners = {
         });
     },
 
+    projectList: document.querySelectorAll('button.folder'),
+
+    updateProjectList: function () {
+        this.projectList = document.querySelectorAll('button.folder');
+    },
+
     projectCreation: function () {
         let createProjectButton = document.querySelector('#create-project');
-        createProjectButton.addEventListener('click', () => projectController.addProject());
+        createProjectButton.addEventListener('click', () => {
+            projectController.addProject()
+            this.updateProjectList();
+        });
+
+    },
+
+    projectSelection: function () {
+        console.log(this.projectList);
     },
 
     formSummoning: function () {
