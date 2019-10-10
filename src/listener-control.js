@@ -60,9 +60,18 @@ const setListeners = {
         this.projectList.forEach(project => {
             if (project.hasAttribute('data-has-select-listener') !== true) {
                 project.addEventListener('click', () => {
+                    this.projectDeactivation(this.projectList);
                     project.setAttribute('data-has-select-listener', true);
-                    console.log('hello');
+                    project.toggleAttribute('data-folder-active');
                 });
+            }
+        });
+    },
+
+    projectDeactivation: function (listOfProjects) {
+        listOfProjects.forEach(project => {
+            if (project.hasAttribute('data-folder-active')) {
+                project.toggleAttribute('data-folder-active');
             }
         });
     },
