@@ -5,9 +5,6 @@ createLayout();
 toDoController.defineGrid();
 
 projectController.updateProjMenu();
-projectController.addProject();
-
-toDoController.addToDo();
 
 setListeners.toDoCreation();
 setListeners.toDoDeletion();

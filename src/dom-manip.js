@@ -73,6 +73,7 @@ const toDoController = {
 
         this.toDoGrid.append(toDoContainer);
         toDoContainer.append(toDoName, toDoDueDate, toDoPriority, toDoDescription, toDoCheckbox);
+
         return toDoContainer;
     },
 
@@ -108,6 +109,7 @@ const projectController = {
             this.hideInactiveToDos(e.target.textContent);
         });
         this.projectMenu.append(project);
+        return project;
     },
 
     hideInactiveToDos: function (activeFolderName) {

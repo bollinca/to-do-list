@@ -49,11 +49,11 @@ const setListeners = {
     projectCreation: function () {
         let createProjectButton = document.querySelector('#create-project');
         createProjectButton.addEventListener('click', () => {
-            projectController.addProject()
+            let project = projectController.addProject()
             this.updateProjectList();
             this.projectSelection();
+            project.click();
         });
-
     },
 
     projectSelection: function () {
