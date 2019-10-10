@@ -51,12 +51,20 @@ const setListeners = {
         createProjectButton.addEventListener('click', () => {
             projectController.addProject()
             this.updateProjectList();
+            this.projectSelection();
         });
 
     },
 
     projectSelection: function () {
-        console.log(this.projectList);
+        this.projectList.forEach(project => {
+            if (project.hasAttribute('data-has-select-listener') !== true) {
+                project.addEventListener('click', () => {
+                    project.setAttribute('data-has-select-listener', true);
+                    console.log('hello');
+                });
+            }
+        });
     },
 
     formSummoning: function () {
