@@ -25,7 +25,7 @@ const setListeners = {
     toDoCreation: function () {
         let toDoCreator = document.querySelector('#add-item');
         toDoCreator.addEventListener('click', () => {
-            let newToDo = toDoController.addToDo();
+            let newToDo = toDoController.addToDo(); 
             let newCompleter = newToDo.querySelector('.complete-checkbox');
             newCompleter.addEventListener('click', () => toDoController.markComplete(newToDo));
 

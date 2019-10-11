@@ -100,7 +100,13 @@ const projectController = {
             })();
         };
 
+        let projectContainer = document.createElement('div');
         let project = document.createElement('button');
+        let projectDelete = document.createElement('button');
+        projectDelete.classList.add('folder-delete');
+        projectContainer.append(project);
+        projectContainer.append(projectDelete);
+
         project.classList.add('folder');
         project.textContent = prompt('Project Name?');
         project.setAttribute('data-project-name', `${project.textContent}`);
@@ -108,7 +114,7 @@ const projectController = {
         project.addEventListener('click', (e) => {
             this.hideInactiveToDos(e.target.textContent);
         });
-        this.projectMenu.append(project);
+        this.projectMenu.append(projectContainer);
         return project;
     },
 
