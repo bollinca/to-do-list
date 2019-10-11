@@ -56,7 +56,7 @@ const toDoController = {
         toDoName.setAttribute('data-type', 'name');
 
         let toDoDueDate = document.createElement('h3');
-        toDoDueDate.textContent = '9/9/2019';
+        toDoDueDate.textContent = '2019-09-09';
         toDoDueDate.setAttribute('data-type', 'due-date');
 
         let toDoPriority = document.createElement('p');
@@ -131,9 +131,15 @@ const projectController = {
 const toDoForm = {
     mainContainer: document.querySelector('#content'),
 
-    display: function () {
+    display: function (event) {
         let form = document.createElement('form');
         form.id = 'item-form';
+        let toDo = event.target.parentNode.parentNode;
+
+        let oldName = toDo.querySelector('h2[data-type=name]');
+        let oldPriority = toDo.querySelector('p[data-type=priority]');
+        let oldDue = toDo.querySelector('h3');
+        let oldDescription = toDo.querySelector('p[data-type=description]');
 
         let nameLabel = document.createElement('label');
         nameLabel.setAttribute('for', 'name');
@@ -141,6 +147,7 @@ const toDoForm = {
         let nameInput = document.createElement('input');
         nameInput.setAttribute('type', 'text');
         nameInput.id = 'name';
+        nameInput.value = `${oldName.textContent}`;
 
         let priorityLabel = document.createElement('label');
         priorityLabel.setAttribute('for', 'priority');
@@ -148,6 +155,7 @@ const toDoForm = {
         let priorityInput = document.createElement('input');
         priorityInput.id = 'priority';
         priorityInput.setAttribute('type', 'number');
+        priorityInput.value = `${oldPriority.textContent}`;
 
         let dueLabel = document.createElement('label');
         dueLabel.setAttribute('for', 'due');
@@ -155,12 +163,14 @@ const toDoForm = {
         let dueInput = document.createElement('input');
         dueInput.id = 'due';
         dueInput.setAttribute('type', 'date');
+        dueInput.value = `${oldDue.textContent}`
 
         let descriptionLabel = document.createElement('label');
         descriptionLabel.setAttribute('for', 'description');
         descriptionLabel.textContent = 'Description:';
         let descriptionInput = document.createElement('textarea');
         descriptionInput.id = 'description';
+        descriptionInput.textContent = `${oldDescription.textContent}`;
 
         let formConfirm = document.createElement('button');
         formConfirm.setAttribute('type', 'button');

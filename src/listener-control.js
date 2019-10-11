@@ -34,7 +34,7 @@ const setListeners = {
 
             let newEditor = newToDo.querySelector('.edit');
             newEditor.addEventListener('click', (e) => {
-                toDoForm.display()
+                toDoForm.display(e);
                 this.editItem(e);
             });
         });
@@ -76,15 +76,15 @@ const setListeners = {
         });
     },
 
-    formSummoning: function () {
-        let toDoEditors = Array.from(document.querySelectorAll('.edit'));
-        toDoEditors.forEach(editor => {
-            editor.addEventListener('click', (e) => {
-                toDoForm.display();
-                this.editItem(e);
-            });
-        });
-    },
+    // formSummoning: function () {
+    //     let toDoEditors = Array.from(document.querySelectorAll('.edit'));
+    //     toDoEditors.forEach(editor => {
+    //         editor.addEventListener('click', (e) => {
+    //             toDoForm.display();
+    //             this.editItem(e);
+    //         });
+    //     });
+    // },
 
     editItem: function (e) {
         let itemControls = e.target.parentNode;
