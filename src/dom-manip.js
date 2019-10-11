@@ -100,15 +100,26 @@ const projectController = {
             })();
         };
 
+        let projectList = document.querySelectorAll('.folder');
+        let projectName = prompt('Project Name?');
+        projectList.forEach(project => {
+            if (projectName === project.attributes['data-project-name'].value) {
+                alert('Name in use. Please select another');
+                throw 'Name in use';
+            }
+        });
+
         let projectContainer = document.createElement('div');
         let project = document.createElement('button');
         let projectDelete = document.createElement('button');
+
         projectDelete.classList.add('folder-delete');
         projectContainer.append(project);
         projectContainer.append(projectDelete);
 
         project.classList.add('folder');
-        project.textContent = prompt('Project Name?');
+        project.textContent = projectName;
+
         project.setAttribute('data-project-name', `${project.textContent}`);
         project.toggleAttribute('data-folder-active');
         project.addEventListener('click', (e) => {
@@ -185,4 +196,4 @@ const toDoForm = {
     },
 };
 
-export { toDoController, createLayout, projectController, toDoForm};
+export { toDoController, createLayout, projectController, toDoForm };
