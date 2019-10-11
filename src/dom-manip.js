@@ -128,10 +128,6 @@ const projectController = {
             }
         });
     },
-    // 
-    // removeFolder: function() {
-    // 
-    // }
 }
 
 const toDoForm = {

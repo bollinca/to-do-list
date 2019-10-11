@@ -25,7 +25,7 @@ const setListeners = {
     toDoCreation: function () {
         let toDoCreator = document.querySelector('#add-item');
         toDoCreator.addEventListener('click', () => {
-            let newToDo = toDoController.addToDo(); 
+            let newToDo = toDoController.addToDo();
             let newCompleter = newToDo.querySelector('.complete-checkbox');
             newCompleter.addEventListener('click', () => toDoController.markComplete(newToDo));
 
@@ -52,6 +52,7 @@ const setListeners = {
             let project = projectController.addProject()
             this.updateProjectList();
             this.projectSelection();
+            this.projectDeletion(project);
             project.click();
         });
     },
@@ -76,15 +77,20 @@ const setListeners = {
         });
     },
 
-    // formSummoning: function () {
-    //     let toDoEditors = Array.from(document.querySelectorAll('.edit'));
-    //     toDoEditors.forEach(editor => {
-    //         editor.addEventListener('click', (e) => {
-    //             toDoForm.display();
-    //             this.editItem(e);
-    //         });
-    //     });
-    // },
+    projectDeletion: function (project) {
+        let projectContainer = project.parentNode;
+        let projectDataName = project.attributes['data-project-name'].value;
+        let projectDeleter = projectContainer.querySelector('.folder-delete');
+        projectDeleter.addEventListener('click', () => {
+            projectContainer.parentNode.removeChild(projectContainer);
+            
+            let projectChildren = document.querySelectorAll(`div[data-parent-project=${projectDataName}`);
+            projectChildren.forEach(toDoChild => {
+                let toDoRemove = toDoChild.querySelector('.remove');
+                toDoRemove.click();
+            });
+        });
+    },
 
     editItem: function (e) {
         let itemControls = e.target.parentNode;

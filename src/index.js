@@ -9,5 +9,4 @@ projectController.updateProjMenu();
 setListeners.toDoCreation();
 setListeners.toDoDeletion();
 setListeners.toDoCompletion();
-// setListeners.formSummoning();
 setListeners.projectCreation();
