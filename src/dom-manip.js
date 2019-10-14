@@ -1,3 +1,5 @@
+import { setListeners } from "./listener-control";
+
 const createLayout = () => {
     const mainContainer = document.querySelector('#content');
     const toDoGrid = document.createElement('div');
@@ -92,7 +94,7 @@ const projectController = {
         this.projectMenu = document.querySelector('#project-menu')
     },
 
-    addProject: function () {
+    addProject: function (projectName) {
         let oldActiveProject = document.querySelector('.folder[data-folder-active]');
         if (document.querySelector('.folder[data-folder-active]')) {
             (() => {
@@ -101,7 +103,11 @@ const projectController = {
         };
 
         let projectList = document.querySelectorAll('.folder');
-        let projectName = prompt('Project Name?');
+        
+        if (!projectName) {
+            projectName = prompt('Project Name?');
+        };
+
         projectList.forEach(project => {
             if (projectName === project.attributes['data-project-name'].value) {
                 oldActiveProject.click();
@@ -109,7 +115,6 @@ const projectController = {
                 throw 'Name in use';
             }
         });
-
         let projectContainer = document.createElement('div');
         let project = document.createElement('button');
         let projectDelete = document.createElement('button');
@@ -126,6 +131,7 @@ const projectController = {
         project.addEventListener('click', (e) => {
             this.hideInactiveToDos(e.target.textContent);
         });
+        setListeners.projectDeletion(project);
         this.projectMenu.append(projectContainer);
         return project;
     },

@@ -52,7 +52,6 @@ const setListeners = {
             let project = projectController.addProject()
             this.updateProjectList();
             this.projectSelection();
-            this.projectDeletion(project);
             project.click();
         });
     },
