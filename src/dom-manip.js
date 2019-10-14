@@ -93,9 +93,9 @@ const projectController = {
     },
 
     addProject: function () {
+        let oldActiveProject = document.querySelector('.folder[data-folder-active]');
         if (document.querySelector('.folder[data-folder-active]')) {
             (() => {
-                let oldActiveProject = document.querySelector('.folder[data-folder-active]');
                 oldActiveProject.toggleAttribute('data-folder-active');
             })();
         };
@@ -104,6 +104,7 @@ const projectController = {
         let projectName = prompt('Project Name?');
         projectList.forEach(project => {
             if (projectName === project.attributes['data-project-name'].value) {
+                oldActiveProject.click();
                 alert('Name in use. Please select another');
                 throw 'Name in use';
             }
