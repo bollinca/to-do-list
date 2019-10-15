@@ -7,7 +7,4 @@ toDoController.defineGrid();
 projectController.updateProjMenu();
 projectController.addProject('Default');
 
-setListeners.toDoCreation();
-setListeners.toDoDeletion();
-setListeners.toDoCompletion();
-setListeners.projectCreation();
+setListeners.setAll();

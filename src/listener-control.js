@@ -31,12 +31,21 @@ const setListeners = {
 
             let newDeleter = newToDo.querySelector('.remove');
             newDeleter.addEventListener('click', () => toDoController.remove(newToDo));
+            this.toDoDescriptionExpansion(newToDo);
 
             let newEditor = newToDo.querySelector('.edit');
             newEditor.addEventListener('click', (e) => {
                 toDoForm.display(e);
                 this.editItem(e);
             });
+        });
+    },
+
+    toDoDescriptionExpansion: function (toDo) {
+        let expansionButton = toDo.querySelector('.description-expander');
+        let description = toDo.querySelector('[data-type=description]');
+        expansionButton.addEventListener('click', () => {
+            description.classList.toggle('active-description');
         });
     },
 
@@ -82,7 +91,6 @@ const setListeners = {
         let projectDeleter = projectContainer.querySelector('.folder-delete');
         projectDeleter.addEventListener('click', () => {
             projectContainer.parentNode.removeChild(projectContainer);
-            
             let projectChildren = document.querySelectorAll(`div[data-parent-project=${projectDataName}`);
             projectChildren.forEach(toDoChild => {
                 let toDoRemove = toDoChild.querySelector('.remove');
@@ -108,6 +116,13 @@ const setListeners = {
             };
             form.parentNode.removeChild(form);
         });
+    },
+
+    setAll: function () {
+        this.toDoCreation();
+        this.toDoDeletion();
+        this.toDoCompletion();
+        this.projectCreation();
     },
 };
 

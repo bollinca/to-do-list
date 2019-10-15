@@ -66,6 +66,9 @@ const toDoController = {
         toDoPriority.setAttribute('data-type', 'priority');
 
         let toDoDescription = document.createElement('p');
+        let descriptionExpander = document.createElement('button');
+        descriptionExpander.classList.add('description-expander');
+        descriptionExpander.textContent = 'Show Description';
         toDoDescription.textContent = 'Test description';
         toDoDescription.setAttribute('data-type', 'description');
 
@@ -74,7 +77,7 @@ const toDoController = {
         toDoCheckbox.classList.add('complete-checkbox');
 
         this.toDoGrid.append(toDoContainer);
-        toDoContainer.append(toDoName, toDoDueDate, toDoPriority, toDoDescription, toDoCheckbox);
+        toDoContainer.append(toDoCheckbox, toDoName, toDoDueDate, toDoPriority, descriptionExpander, toDoDescription);
 
         return toDoContainer;
     },
