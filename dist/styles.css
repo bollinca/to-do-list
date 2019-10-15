@@ -7,11 +7,8 @@
 }
 
 .grid {
-    display: grid;
     background-color: rgba(211, 211, 211, 0.678);
-    grid-template-rows: repeat(auto-fit, minmax(100px, 100px));
-    grid-gap: 5px 0px;
-    margin: 0px 25px 0px 275px;
+    margin: 0px 25px 5px 275px;
     padding: 5px 0;
     height: 94vh;
     overflow-y: auto;
@@ -21,8 +18,10 @@
 .grid-item {
     background-color: rgb(243, 242, 223);
     border: 3px solid black;
-    min-height: 100px;
+    min-height: 75px;
+    max-height: 150px;
     overflow-y: auto;
+    margin: 5px;
 }
 
 .grid-item[data-item-hidden] {
@@ -52,6 +51,7 @@ p[data-type='description'].active-description {
     visibility: visible;
     height: inherit;
     width: inherit;
+    margin-bottom: 10px;
 }
 
 .description-expander {
