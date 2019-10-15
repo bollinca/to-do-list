@@ -13,7 +13,7 @@ const setListeners = {
     },
 
     toDoCompletion: function () {
-        let toDoArray = Array.from(document.querySelectorAll('.grid-item'));
+        let toDoArray = Array.from(document.querySelectorAll('.list-item'));
         toDoArray.forEach(toDo => {
             let toDoCheckbox = toDo.querySelector('.complete-checkbox');
             toDoCheckbox.addEventListener('click', () => {

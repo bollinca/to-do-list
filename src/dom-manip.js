@@ -2,8 +2,8 @@ import { setListeners } from "./listener-control";
 
 const createLayout = () => {
     const mainContainer = document.querySelector('#content');
-    const toDoGrid = document.createElement('div');
-    toDoGrid.classList.add('grid');
+    const toDoList = document.createElement('div');
+    toDoList.classList.add('list');
 
     const toDoButton = document.createElement('button');
     toDoButton.id = 'add-item';
@@ -21,15 +21,15 @@ const createLayout = () => {
     projectMenu.append(projectButton);
     mainContainer.append(projectMenu);
     mainContainer.append(toDoButton);
-    mainContainer.append(toDoGrid);
+    mainContainer.append(toDoList);
 };
 
 const toDoController = {
     mainContainer: document.querySelector('#content'),
-    toDoGrid: null,
+    toDoList: null,
 
-    defineGrid: function () {
-        this.toDoGrid = document.querySelector('.grid');
+    defineList: function () {
+        this.toDoList = document.querySelector('.list');
     },
 
     addToDo: function () {
@@ -37,7 +37,7 @@ const toDoController = {
         let activeFolderName = (() => activeFolder.attributes['data-project-name'].value)();
 
         let toDoContainer = document.createElement('div');
-        toDoContainer.classList.add('grid-item', 'to-do');
+        toDoContainer.classList.add('list-item', 'to-do');
         toDoContainer.setAttribute('data-parent-project', `${activeFolderName}`)
 
         let toDoDeleter = document.createElement('button');
@@ -68,7 +68,7 @@ const toDoController = {
         let toDoDescription = document.createElement('p');
         let descriptionExpander = document.createElement('button');
         descriptionExpander.classList.add('description-expander');
-        descriptionExpander.textContent = 'Show Description';
+        descriptionExpander.textContent = 'Show/Hide Description';
         toDoDescription.textContent = 'Test description';
         toDoDescription.setAttribute('data-type', 'description');
 
@@ -76,7 +76,7 @@ const toDoController = {
         toDoCheckbox.setAttribute('type', 'checkbox');
         toDoCheckbox.classList.add('complete-checkbox');
 
-        this.toDoGrid.append(toDoContainer);
+        this.toDoList.append(toDoContainer);
         toDoContainer.append(toDoCheckbox, toDoName, toDoDueDate, toDoPriority, descriptionExpander, toDoDescription);
 
         return toDoContainer;
@@ -140,7 +140,7 @@ const projectController = {
     },
 
     hideInactiveToDos: function (activeFolderName) {
-        let allToDos = Array.from(document.querySelectorAll(`.grid-item`));
+        let allToDos = Array.from(document.querySelectorAll(`.list-item`));
         allToDos.forEach(toDo => {
             if (toDo.attributes['data-parent-project'].value !== activeFolderName && toDo.hasAttribute('data-item-hidden') === false) {
                 toDo.toggleAttribute('data-item-hidden');
