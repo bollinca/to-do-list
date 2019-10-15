@@ -1,4 +1,5 @@
 import { toDoController, toDoForm, projectController } from './dom-manip.js';
+import { storageControl } from './storage.js';
 
 const setListeners = {
     toDoDeletion: function () {
@@ -32,12 +33,13 @@ const setListeners = {
             let newDeleter = newToDo.querySelector('.remove');
             newDeleter.addEventListener('click', () => toDoController.remove(newToDo));
             this.toDoDescriptionExpansion(newToDo);
+            storageControl.updateItemList();
 
             let newEditor = newToDo.querySelector('.edit');
             newEditor.addEventListener('click', (e) => {
                 toDoForm.display(e);
                 this.editItem(e);
-            });
+            }); 
         });
     },
 
@@ -62,6 +64,7 @@ const setListeners = {
             this.updateProjectList();
             this.projectSelection();
             project.click();
+            storageControl.updateProjList();
         });
     },
 
