@@ -33,7 +33,7 @@ const setListeners = {
             let newDeleter = newToDo.querySelector('.remove');
             newDeleter.addEventListener('click', () => toDoController.remove(newToDo));
             this.toDoDescriptionExpansion(newToDo);
-            storageControl.updateItemList();
+            storageControl.items.updateItemList();
 
             let newEditor = newToDo.querySelector('.edit');
             newEditor.addEventListener('click', (e) => {
@@ -64,7 +64,7 @@ const setListeners = {
             this.updateProjectList();
             this.projectSelection();
             project.click();
-            storageControl.updateProjList();
+            storageControl.projects.updateProjList();
         });
     },
 
