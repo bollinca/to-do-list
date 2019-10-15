@@ -6,7 +6,7 @@
     margin: 0 auto;
 }
 
-.grid {
+.list {
     background-color: rgba(211, 211, 211, 0.678);
     margin: 0px 25px 5px 275px;
     padding: 5px 0;
@@ -15,7 +15,7 @@
     border: groove rgba(211, 211, 211, 0.678) 10px;
 }
 
-.grid-item {
+.list-item {
     background-color: rgb(243, 242, 223);
     border: 3px solid black;
     min-height: 75px;
@@ -24,16 +24,16 @@
     margin: 5px;
 }
 
-.grid-item[data-item-hidden] {
+.list-item[data-item-hidden] {
     display: none;
 }
 
-.grid-item > h2 {
+.list-item > h2 {
     display: inline-block;
     margin: 0 0 0 10px;
 }
 
-.grid-item > p, .grid-item > h3 {
+.list-item > p, .list-item > h3 {
     margin: 5px 50px 0 40px;
     display: inline-block
 }
@@ -56,18 +56,18 @@ p[data-type='description'].active-description {
 
 .description-expander {
     display: inline-block;
-    margin-left: 0px;
+    margin: 5px;
 }
 
 p[data-type='priority']::before {
     content: 'Priority Level: ';
 }
 
-.grid-item > h2 {
+.list-item > h2 {
     margin-top: 10px;
 }
 
-.grid-item > h3:before {
+.list-item > h3:before {
     content: 'Due: ';
 }
 
