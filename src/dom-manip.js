@@ -106,7 +106,7 @@ const projectController = {
         };
 
         let projectList = document.querySelectorAll('.folder');
-        
+
         if (!projectName) {
             projectName = prompt('Project Name?');
         };
@@ -155,54 +155,56 @@ const toDoForm = {
     mainContainer: document.querySelector('#content'),
 
     display: function (event) {
-        let form = document.createElement('form');
-        form.id = 'item-form';
         let toDo = event.target.parentNode.parentNode;
+        if (!document.querySelector('#item-form')) {
+            let form = document.createElement('form');
+            form.id = 'item-form';
 
-        let oldName = toDo.querySelector('h2[data-type=name]');
-        let oldPriority = toDo.querySelector('p[data-type=priority]');
-        let oldDue = toDo.querySelector('h3');
-        let oldDescription = toDo.querySelector('p[data-type=description]');
+            let oldName = toDo.querySelector('h2[data-type=name]');
+            let oldPriority = toDo.querySelector('p[data-type=priority]');
+            let oldDue = toDo.querySelector('h3');
+            let oldDescription = toDo.querySelector('p[data-type=description]');
 
-        let nameLabel = document.createElement('label');
-        nameLabel.setAttribute('for', 'name');
-        nameLabel.textContent = 'Name:'
-        let nameInput = document.createElement('input');
-        nameInput.setAttribute('type', 'text');
-        nameInput.id = 'name';
-        nameInput.value = `${oldName.textContent}`;
+            let nameLabel = document.createElement('label');
+            nameLabel.setAttribute('for', 'name');
+            nameLabel.textContent = 'Name:'
+            let nameInput = document.createElement('input');
+            nameInput.setAttribute('type', 'text');
+            nameInput.id = 'name';
+            nameInput.value = `${oldName.textContent}`;
 
-        let priorityLabel = document.createElement('label');
-        priorityLabel.setAttribute('for', 'priority');
-        priorityLabel.textContent = 'Priority Level:';
-        let priorityInput = document.createElement('input');
-        priorityInput.id = 'priority';
-        priorityInput.setAttribute('type', 'number');
-        priorityInput.value = `${oldPriority.textContent}`;
+            let priorityLabel = document.createElement('label');
+            priorityLabel.setAttribute('for', 'priority');
+            priorityLabel.textContent = 'Priority Level:';
+            let priorityInput = document.createElement('input');
+            priorityInput.id = 'priority';
+            priorityInput.setAttribute('type', 'number');
+            priorityInput.value = `${oldPriority.textContent}`;
 
-        let dueLabel = document.createElement('label');
-        dueLabel.setAttribute('for', 'due');
-        dueLabel.textContent = 'Due Date:';
-        let dueInput = document.createElement('input');
-        dueInput.id = 'due';
-        dueInput.setAttribute('type', 'date');
-        dueInput.value = `${oldDue.textContent}`
+            let dueLabel = document.createElement('label');
+            dueLabel.setAttribute('for', 'due');
+            dueLabel.textContent = 'Due Date:';
+            let dueInput = document.createElement('input');
+            dueInput.id = 'due';
+            dueInput.setAttribute('type', 'date');
+            dueInput.value = `${oldDue.textContent}`
 
-        let descriptionLabel = document.createElement('label');
-        descriptionLabel.setAttribute('for', 'description');
-        descriptionLabel.textContent = 'Description:';
-        let descriptionInput = document.createElement('textarea');
-        descriptionInput.id = 'description';
-        descriptionInput.textContent = `${oldDescription.textContent}`;
+            let descriptionLabel = document.createElement('label');
+            descriptionLabel.setAttribute('for', 'description');
+            descriptionLabel.textContent = 'Description:';
+            let descriptionInput = document.createElement('textarea');
+            descriptionInput.id = 'description';
+            descriptionInput.textContent = `${oldDescription.textContent}`;
 
-        let formConfirm = document.createElement('button');
-        formConfirm.setAttribute('type', 'button');
-        formConfirm.textContent = 'Confirm';
-        formConfirm.id = 'confirm';
+            let formConfirm = document.createElement('button');
+            formConfirm.setAttribute('type', 'button');
+            formConfirm.textContent = 'Confirm';
+            formConfirm.id = 'confirm';
 
-        form.append(nameLabel, nameInput, dueLabel, dueInput, priorityLabel, priorityInput, descriptionLabel, descriptionInput, formConfirm);
+            form.append(nameLabel, nameInput, dueLabel, dueInput, priorityLabel, priorityInput, descriptionLabel, descriptionInput, formConfirm);
 
-        this.mainContainer.append(form);
+            this.mainContainer.append(form);
+        }
     },
 };
 
