@@ -32,13 +32,18 @@ const toDoController = {
         this.toDoList = document.querySelector('.list');
     },
 
-    addToDo: function () {
+    addToDo: function (name = 'Default Name', due = '2019-09-09', priority = '5', description = 'Default Description', completed = false) {
         let activeFolder = (() => document.querySelector('.folder[data-folder-active]'))();
         let activeFolderName = (() => activeFolder.attributes['data-project-name'].value)();
 
         let toDoContainer = document.createElement('div');
         toDoContainer.classList.add('list-item', 'to-do');
-        toDoContainer.setAttribute('data-parent-project', `${activeFolderName}`)
+        toDoContainer.setAttribute('data-parent-project', activeFolderName)
+        toDoContainer.setAttribute('data-type-name', name);
+        toDoContainer.setAttribute('data-type-due-date', due);
+        toDoContainer.setAttribute('data-type-priority', priority);
+        toDoContainer.setAttribute('data-type-description', description);
+        toDoContainer.setAttribute('data-type-completed', completed);
 
         let toDoDeleter = document.createElement('button');
         toDoDeleter.classList.add('remove');
@@ -52,24 +57,24 @@ const toDoController = {
         toDoControls.class = 'item-controls';
         toDoControls.append(toDoDeleter, toDoEditor);
         toDoContainer.append(toDoControls);
-
+        // Editable properties
         let toDoName = document.createElement('h2');
-        toDoName.textContent = 'Default Title';
+        toDoName.textContent = name;
         toDoName.setAttribute('data-type', 'name');
 
         let toDoDueDate = document.createElement('h3');
-        toDoDueDate.textContent = '2019-09-09';
+        toDoDueDate.textContent = due;
         toDoDueDate.setAttribute('data-type', 'due-date');
 
         let toDoPriority = document.createElement('p');
-        toDoPriority.textContent = '5';
+        toDoPriority.textContent = priority;
         toDoPriority.setAttribute('data-type', 'priority');
 
         let toDoDescription = document.createElement('p');
         let descriptionExpander = document.createElement('button');
         descriptionExpander.classList.add('description-expander');
         descriptionExpander.textContent = 'Show/Hide Description';
-        toDoDescription.textContent = 'Test description';
+        toDoDescription.textContent = description;
         toDoDescription.setAttribute('data-type', 'description');
 
         let toDoCheckbox = document.createElement('input');
@@ -172,6 +177,7 @@ const toDoForm = {
             nameInput.setAttribute('type', 'text');
             nameInput.id = 'name';
             nameInput.value = `${oldName.textContent}`;
+            nameInput.setAttribute('data-type-name', nameInput.value);
 
             let priorityLabel = document.createElement('label');
             priorityLabel.setAttribute('for', 'priority');
@@ -180,6 +186,7 @@ const toDoForm = {
             priorityInput.id = 'priority';
             priorityInput.setAttribute('type', 'number');
             priorityInput.value = `${oldPriority.textContent}`;
+            priorityInput.setAttribute('data-type-priority', priorityInput.value);
 
             let dueLabel = document.createElement('label');
             dueLabel.setAttribute('for', 'due');
@@ -188,6 +195,7 @@ const toDoForm = {
             dueInput.id = 'due';
             dueInput.setAttribute('type', 'date');
             dueInput.value = `${oldDue.textContent}`
+            dueInput.setAttribute('data-type-due-date', dueInput.value);
 
             let descriptionLabel = document.createElement('label');
             descriptionLabel.setAttribute('for', 'description');
@@ -195,6 +203,7 @@ const toDoForm = {
             let descriptionInput = document.createElement('textarea');
             descriptionInput.id = 'description';
             descriptionInput.textContent = `${oldDescription.textContent}`;
+            descriptionInput.setAttribute('data-type-description', descriptionInput.value);
 
             let formConfirm = document.createElement('button');
             formConfirm.setAttribute('type', 'button');

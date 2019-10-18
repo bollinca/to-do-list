@@ -33,7 +33,7 @@ const setListeners = {
             let newDeleter = newToDo.querySelector('.remove');
             newDeleter.addEventListener('click', () => toDoController.remove(newToDo));
             this.toDoDescriptionExpansion(newToDo);
-            storageControl.items.updateItemList();
+            storageControl.items.setAllItems();
 
             let newEditor = newToDo.querySelector('.edit');
             newEditor.addEventListener('click', (e) => {
@@ -126,6 +126,11 @@ const setListeners = {
                 dataDisplays[i].textContent = userData[i];
             };
             form.parentNode.removeChild(form);
+            console.log(userInputs);
+            formTarget.setAttribute('data-type-name', userInputs[0].value);
+            formTarget.setAttribute('data-type-due-date', userInputs[1].value);
+            formTarget.setAttribute('data-type-priority', userInputs[2].value);
+            formTarget.setAttribute('data-type-description', userInputs[3].value);
         });
     },
 

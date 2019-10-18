@@ -5,10 +5,9 @@ const storageControl = {
     itemList: document.querySelectorAll('.list-item'),
 
     projects: {
-        
         setAllProj: function () {
             this.projectList = Array.from(document.querySelectorAll('.folder'));
-            this.projectList = this.projectList.map(item => item.attributes['data-project-name'].value );
+            this.projectList = this.projectList.map(item => item.attributes['data-project-name'].value);
             localStorage.setItem('allProjects', `${JSON.stringify(this.projectList)}`);
         },
 
@@ -16,21 +15,18 @@ const storageControl = {
             return JSON.parse(localStorage.getItem('allProjects'));
         },
 
-        summonStoredProjects: function() {
+        summonStoredProjects: function () {
             let projectNames = this.getAllProj();
             projectNames.forEach(name => projectController.addProject(name));
         },
     },
-    
-    items: {
-        updateItemList: function () {
-            this.itemList = Array.from(document.querySelectorAll('.list-item'));
-            console.log(this.itemList);
-        },
 
+    items: {
         setAllItems: function () {
-            this.updateItemList();
-            localStorage.setItem('allItems', `${(this.itemList)}`);
+            this.itemList = Array.from(document.querySelectorAll('.list-item'));
+            
+            localStorage.setItem('allItems', `${this.itemList}`);
+            // this.itemList.forEach(item => console.log(item.attributes));
         },
 
         getAllItems: function () {
