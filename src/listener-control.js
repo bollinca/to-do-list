@@ -62,9 +62,9 @@ const setListeners = {
         createProjectButton.addEventListener('click', () => {
             let project = projectController.addProject()
             this.updateProjectList();
+            this.projectDeletion();
             this.projectSelection();
             project.click();
-            storageControl.projects.updateProjList();
         });
     },
 
@@ -88,16 +88,19 @@ const setListeners = {
         });
     },
 
-    projectDeletion: function (project) {
-        let projectContainer = project.parentNode;
-        let projectDataName = project.attributes['data-project-name'].value;
-        let projectDeleter = projectContainer.querySelector('.folder-delete');
-        projectDeleter.addEventListener('click', () => {
-            projectContainer.parentNode.removeChild(projectContainer);
-            let projectChildren = document.querySelectorAll(`div[data-parent-project=${projectDataName}`);
-            projectChildren.forEach(toDoChild => {
-                let toDoRemove = toDoChild.querySelector('.remove');
-                toDoRemove.click();
+    projectDeletion: function () {
+        this.projectList.forEach(project => {
+            let projectContainer = project.parentNode;
+            let projectDataName = project.attributes['data-project-name'].value;
+            let projectDeleter = projectContainer.querySelector('.folder-delete');
+            projectDeleter.addEventListener('click', () => {
+                projectContainer.parentNode.removeChild(projectContainer);
+                let projectChildren = document.querySelectorAll(`div[data-parent-project=${projectDataName}`);
+                projectChildren.forEach(toDoChild => {
+                    let toDoRemove = toDoChild.querySelector('.remove');
+                    toDoRemove.click();
+                });
+                storageControl.projects.setAllProj();
             });
         });
     },

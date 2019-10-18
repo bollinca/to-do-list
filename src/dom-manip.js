@@ -1,4 +1,4 @@
-import { setListeners } from "./listener-control";
+import { storageControl } from "./storage.js";
 
 const createLayout = () => {
     const mainContainer = document.querySelector('#content');
@@ -134,8 +134,8 @@ const projectController = {
         project.addEventListener('click', (e) => {
             this.hideInactiveToDos(e.target.textContent);
         });
-        setListeners.projectDeletion(project);
         this.projectMenu.append(projectContainer);
+        storageControl.projects.setAllProj();
         return project;
     },
 
