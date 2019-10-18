@@ -8,6 +8,9 @@ toDoController.defineList();
 projectController.updateProjMenu();
 if (localStorage.allProjects) {
     storageControl.projects.summonStoredProjects();
+    setListeners.updateProjectList();
+    setListeners.projectDeletion();
+    setListeners.projectSelection();
 } else {
     projectController.addProject('Default');
 }
