@@ -39,7 +39,7 @@ const setListeners = {
             newEditor.addEventListener('click', (e) => {
                 toDoForm.display(e);
                 this.editItem(e);
-            }); 
+            });
         });
     },
 
@@ -93,15 +93,20 @@ const setListeners = {
             let projectContainer = project.parentNode;
             let projectDataName = project.attributes['data-project-name'].value;
             let projectDeleter = projectContainer.querySelector('.folder-delete');
-            projectDeleter.addEventListener('click', () => {
-                projectContainer.parentNode.removeChild(projectContainer);
-                let projectChildren = document.querySelectorAll(`div[data-parent-project=${projectDataName}`);
-                projectChildren.forEach(toDoChild => {
-                    let toDoRemove = toDoChild.querySelector('.remove');
-                    toDoRemove.click();
+            if (projectDeleter.hasAttribute('data-has-delete-listener')) {
+                return;
+            } else {
+                projectDeleter.toggleAttribute('data-has-delete-listener');
+                projectDeleter.addEventListener('click', () => {
+                    projectContainer.parentNode.removeChild(projectContainer);
+                    let projectChildren = document.querySelectorAll(`div[data-parent-project=${projectDataName}`);
+                    projectChildren.forEach(toDoChild => {
+                        let toDoRemove = toDoChild.querySelector('.remove');
+                        toDoRemove.click();
+                    });
+                    storageControl.projects.setAllProj();
                 });
-                storageControl.projects.setAllProj();
-            });
+            }
         });
     },
 
