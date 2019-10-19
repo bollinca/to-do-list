@@ -1,4 +1,5 @@
 import { projectController, toDoController } from './dom-manip.js';
+import { setListeners } from './listener-control.js';
 
 const storageControl = {
     projectList: document.querySelectorAll('.folder'),
@@ -37,10 +38,12 @@ const storageControl = {
 
         summonStored: function () {
             let itemArrays = this.getAllItems();
-            itemArrays.forEach(array => toDoController.addToDo(...array));
+            itemArrays.forEach(array => {
+                let newToDo = toDoController.addToDo(...array);
+                setListeners.loadToDoListeners(newToDo);
+            });
         }
-    }
-
+    },
 };
 
 export { storageControl };

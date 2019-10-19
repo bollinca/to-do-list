@@ -52,6 +52,19 @@ const setListeners = {
         });
     },
 
+    loadToDoListeners: function (toDo) {
+        let newEditButton = (toDo.querySelector('.edit'));
+        newEditButton.addEventListener('click', (e) => {
+            toDoForm.display(e);
+            this.editItem(e);
+        });
+        let newExpansionButton = toDo.querySelector('.description-expander');
+        let description = toDo.querySelector('[data-type=description]');
+        newExpansionButton.addEventListener('click', () => {
+            description.classList.toggle('active-description');
+        });
+    },
+
     projectList: document.querySelectorAll('button.folder'),
 
     updateProjectList: function () {
