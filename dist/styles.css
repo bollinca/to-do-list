@@ -137,6 +137,10 @@ button.folder {
     color: black;
 }
 
+.folder[data-folder-active] {
+    background-color: rgb(67, 223, 235);
+}
+
 button.folder-delete {
     display: inline-block;
     height: 25px;
