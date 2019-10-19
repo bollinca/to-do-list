@@ -1,4 +1,4 @@
-import { projectController } from './dom-manip.js';
+import { projectController, toDoController } from './dom-manip.js';
 
 const storageControl = {
     projectList: document.querySelectorAll('.folder'),
@@ -15,7 +15,7 @@ const storageControl = {
             return JSON.parse(localStorage.getItem('allProjects'));
         },
 
-        summonStoredProjects: function () {
+        summonStored: function () {
             let projectNames = this.getAllProj();
             projectNames.forEach(name => projectController.addProject(name));
         },
@@ -24,13 +24,20 @@ const storageControl = {
     items: {
         setAllItems: function () {
             this.itemList = Array.from(document.querySelectorAll('.list-item'));
-            
-            localStorage.setItem('allItems', `${this.itemList}`);
-            // this.itemList.forEach(item => console.log(item.attributes));
+            let itemValuesMapped = this.itemList.map(item => [item.attributes['data-parent-project'].value, item.attributes['data-type-name'].value,
+                                                            item.attributes['data-type-due-date'].value, item.attributes['data-type-priority'].value,
+                                                            item.attributes['data-type-description'].value, item.attributes['data-type-completed'].value]);
+            console.log(itemValuesMapped);
+            localStorage.setItem('allItems', JSON.stringify(itemValuesMapped));
         },
 
         getAllItems: function () {
-            localStorage.getItem('allItems');
+            return JSON.parse(localStorage.getItem('allItems'));
+        },
+
+        summonStored: function () {
+            let itemArrays = this.getAllItems();
+            itemArrays.forEach(array => toDoController.addToDo(...array));
         }
     }
 

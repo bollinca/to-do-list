@@ -32,7 +32,7 @@ const toDoController = {
         this.toDoList = document.querySelector('.list');
     },
 
-    addToDo: function (name = 'Default Name', due = '2019-09-09', priority = '5', description = 'Default Description', completed = false) {
+    addToDo: function (project = 'Default', name = 'Default Name', due = '2019-09-09', priority = '5', description = 'Default Description', completed = false) {
         let activeFolder = (() => document.querySelector('.folder[data-folder-active]'))();
         let activeFolderName = (() => activeFolder.attributes['data-project-name'].value)();
 
@@ -83,6 +83,7 @@ const toDoController = {
 
         this.toDoList.append(toDoContainer);
         toDoContainer.append(toDoCheckbox, toDoName, toDoDueDate, toDoPriority, descriptionExpander, toDoDescription);
+        storageControl.items.setAllItems();
 
         return toDoContainer;
     },
@@ -115,7 +116,7 @@ const projectController = {
         if (!projectName) {
             projectName = prompt('Project Name?');
             if (projectName === null) {
-                throw 'prmopt cancelled';
+                throw 'prompt cancelled';
             }
         };
 
