@@ -63,6 +63,12 @@ const setListeners = {
         newExpansionButton.addEventListener('click', () => {
             description.classList.toggle('active-description');
         });
+
+        let checkbox = toDo.querySelector('.complete-checkbox');
+        if (toDo.attributes['data-type-completed'].value === 'true') {
+            toDo.classList.add('complete');
+            checkbox.checked = true;
+        };
     },
 
     projectList: document.querySelectorAll('button.folder'),

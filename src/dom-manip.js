@@ -37,11 +37,9 @@ const toDoController = {
         let activeFolder;
         if (project === null) {
             activeFolder = (() => document.querySelector('.folder[data-folder-active]'))();
-            console.log(activeFolder);
             activeFolderName = (() => activeFolder.attributes['data-project-name'].value)();
         } else if (project !== null) {
             activeFolder = document.querySelector(`.folder[data-project-name=${project}]`);
-            console.log(activeFolder);
             activeFolderName = project;
             activeFolder.click();
         };
@@ -104,6 +102,12 @@ const toDoController = {
 
     markComplete: function (toDo) {
         toDo.classList.toggle('complete');
+        if (toDo.classList.contains('complete')) {
+            toDo.setAttribute('data-type-completed', true);
+        } else {
+            toDo.setAttribute('data-type-completed', false);
+        };
+        storageControl.items.setAllItems();
     },
 };
 

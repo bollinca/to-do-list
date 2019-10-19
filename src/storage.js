@@ -28,7 +28,6 @@ const storageControl = {
             let itemValuesMapped = this.itemList.map(item => [item.attributes['data-parent-project'].value, item.attributes['data-type-name'].value,
                                                             item.attributes['data-type-due-date'].value, item.attributes['data-type-priority'].value,
                                                             item.attributes['data-type-description'].value, item.attributes['data-type-completed'].value]);
-            console.log(itemValuesMapped);
             localStorage.setItem('allItems', JSON.stringify(itemValuesMapped));
         },
 
