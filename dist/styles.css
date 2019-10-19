@@ -138,7 +138,7 @@ button.folder {
 }
 
 .folder[data-folder-active] {
-    background-color: rgb(67, 223, 235);
+    background-color: rgb(67, 223, 235);    
 }
 
 button.folder-delete {
