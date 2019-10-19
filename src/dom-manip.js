@@ -40,8 +40,12 @@ const toDoController = {
             activeFolderName = (() => activeFolder.attributes['data-project-name'].value)();
         } else if (project !== null) {
             activeFolder = document.querySelector(`.folder[data-project-name=${project}]`);
+            if (activeFolder === null) {
+                console.log('no active folder');
+            } else {
             activeFolderName = project;
             activeFolder.click();
+            };
         };
 
         let toDoContainer = document.createElement('div');

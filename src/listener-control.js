@@ -125,6 +125,7 @@ const setListeners = {
                         toDoRemove.click();
                     });
                     storageControl.projects.setAllProj();
+                    storageControl.items.setAllItems();
                 });
             }
         });

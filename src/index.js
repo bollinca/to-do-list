@@ -16,6 +16,9 @@ if (localStorage.allProjects) {
     };
 } else {
     projectController.addProject('Default');
+    setListeners.updateProjectList();
+    setListeners.projectDeletion();
+    setListeners.projectSelection();
 };
 
 setListeners.setAll();
