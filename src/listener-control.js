@@ -9,6 +9,7 @@ const setListeners = {
                 let toDoControls = remover.parentNode;
                 let toDo = toDoControls.parentNode;
                 toDoController.remove(toDo);
+                storageControl.items.setAllItems();
             });
         });
     },

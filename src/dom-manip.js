@@ -32,9 +32,19 @@ const toDoController = {
         this.toDoList = document.querySelector('.list');
     },
 
-    addToDo: function (project = 'Default', name = 'Default Name', due = '2019-09-09', priority = '5', description = 'Default Description', completed = false) {
-        let activeFolder = (() => document.querySelector('.folder[data-folder-active]'))();
-        let activeFolderName = (() => activeFolder.attributes['data-project-name'].value)();
+    addToDo: function (project = null, name = 'Default Name', due = '2019-09-09', priority = '5', description = 'Default Description', completed = false) {
+        let activeFolderName;
+        let activeFolder;
+        if (project === null) {
+            activeFolder = (() => document.querySelector('.folder[data-folder-active]'))();
+            console.log(activeFolder);
+            activeFolderName = (() => activeFolder.attributes['data-project-name'].value)();
+        } else if (project !== null) {
+            activeFolder = document.querySelector(`.folder[data-project-name=${project}]`);
+            console.log(activeFolder);
+            activeFolderName = project;
+            activeFolder.click();
+        };
 
         let toDoContainer = document.createElement('div');
         toDoContainer.classList.add('list-item', 'to-do');

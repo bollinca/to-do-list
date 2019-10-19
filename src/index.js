@@ -11,7 +11,7 @@ if (localStorage.allProjects) {
     setListeners.updateProjectList();
     setListeners.projectDeletion();
     setListeners.projectSelection();
-    if(localStorage.allItems) {
+    if (localStorage.allItems) {
         storageControl.items.summonStored();
     }
 } else {
