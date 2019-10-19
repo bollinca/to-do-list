@@ -114,6 +114,9 @@ const projectController = {
 
         if (!projectName) {
             projectName = prompt('Project Name?');
+            if (projectName === null) {
+                throw 'prmopt cancelled';
+            }
         };
 
         projectList.forEach(project => {
