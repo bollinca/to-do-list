@@ -68,7 +68,7 @@ const setListeners = {
         if (toDo.attributes['data-type-completed'].value === 'true') {
             toDo.classList.add('complete');
             checkbox.checked = true;
-        };
+        }
     },
 
     projectList: document.querySelectorAll('button.folder'),
@@ -145,7 +145,7 @@ const setListeners = {
             let dataDisplays = formTarget.querySelectorAll(`[data-type]`);
             for (let i = 0; i < dataDisplays.length; i++) {
                 dataDisplays[i].textContent = userData[i];
-            };
+            }
             form.parentNode.removeChild(form);
 
             formTarget.setAttribute('data-type-name', userInputs[0].value);

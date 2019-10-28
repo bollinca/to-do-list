@@ -45,8 +45,8 @@ const toDoController = {
             } else {
             activeFolderName = project;
             activeFolder.click();
-            };
-        };
+            }
+        }
 
         let toDoContainer = document.createElement('div');
         toDoContainer.classList.add('list-item', 'to-do');
@@ -110,7 +110,7 @@ const toDoController = {
             toDo.setAttribute('data-type-completed', true);
         } else {
             toDo.setAttribute('data-type-completed', false);
-        };
+        }
         storageControl.items.setAllItems();
     },
 };
@@ -127,7 +127,7 @@ const projectController = {
             (() => {
                 oldActiveProject.toggleAttribute('data-folder-active');
             })();
-        };
+        }
 
         let projectList = document.querySelectorAll('.folder');
 
@@ -136,7 +136,7 @@ const projectController = {
             if (projectName === null) {
                 throw 'prompt cancelled';
             }
-        };
+        }
 
         projectList.forEach(project => {
             if (projectName === project.attributes['data-project-name'].value) {

@@ -13,12 +13,12 @@ if (localStorage.allProjects) {
     setListeners.projectSelection();
     if (localStorage.allItems) {
         storageControl.items.summonStored();
-    };
+    }
 } else {
     projectController.addProject('Default');
     setListeners.updateProjectList();
     setListeners.projectDeletion();
     setListeners.projectSelection();
-};
+}
 
 setListeners.setAll();
